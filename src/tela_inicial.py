@@ -1,10 +1,5 @@
 from src.cliente import *
 from src.animal import *
-<<<<<<< HEAD
-from src.ong import *
-=======
-from src.animal import *
->>>>>>> 6e0c2edd2833e11ada915bb567043f0f3b3e41f1
 
 def menu_inicial():
     print(" Seja bem vindo ao sistema de crud.\n")
@@ -30,11 +25,7 @@ def tela_usuario():
                 print("CRUD Animais")
             case 3:
                 # aqui vai ser chamada a funçao do crud animais
-<<<<<<< HEAD
-                exibir_menu_ong()
-=======
-                print("CRUD ONG")
->>>>>>> 6e0c2edd2833e11ada915bb567043f0f3b3e41f1
+                pass
             case 4:
                 print("Saindo...")
                 break
