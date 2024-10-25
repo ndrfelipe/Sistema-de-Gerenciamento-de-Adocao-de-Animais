@@ -4,9 +4,7 @@ from src.cliente import *
 
 def main():
     """ Função central que irá executar o código  """
-    menu_inicial()
-    # cadastrar_cliente()
-    # listar_clientes()
+    tela_usuario()
     
 if __name__ == '__main__':
     main()
