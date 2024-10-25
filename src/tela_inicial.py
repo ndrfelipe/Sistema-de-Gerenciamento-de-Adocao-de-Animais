@@ -21,8 +21,7 @@ def tela_usuario():
                 exibir_opcoes_cliente()
             case 2:
                 # aqui vai ser chamada a funçao do crud adoc
-                exibir_menu_animal()
-                print("CRUD Animais")
+                exibir_opcoes_animal()
             case 3:
                 # aqui vai ser chamada a funçao do crud animais
                 pass

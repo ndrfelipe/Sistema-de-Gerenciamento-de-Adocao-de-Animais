@@ -1,5 +1,6 @@
 from src.tela_inicial import *
 from src.cliente import *
+from src.animal import *
 
 
 

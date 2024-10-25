@@ -33,8 +33,6 @@ def excluir_cliente():
 def listar_um_cliente():
     pass
 
-
-#essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
 def exibir_opcoes_cliente():
     while True:
         exibir_menu_cliente()

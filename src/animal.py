@@ -36,47 +36,47 @@ def cadastrar_animal():
         sexo_animal = str(input("   Insira o sexo do seu animal: "))
         cor_animal = str(input("   Insira a cor do seu animal: "))
         peso_animal = str(input("   Insira o peso do seu animal: "))
-        lista_de_animais.append({'Nome:': nome})
+        lista_de_animais.append({'Nome:': nome_animal})
 
         print("""
-            =========================
-            | [1] PORTE MINI        |
-            | [2] PEQUENO PORTE     |
-            | [3] PORTE MÉDIO       |
-            | [4] PORTE GRANDE      |
-            | [5] PORTE GIGANTE     |
-            | [0] VOLTAR            |
-            =========================
-            """)
-    op = int(input("Selecione o porte do animal: "))
+=========================
+| [1] PORTE MINI        |
+| [2] PEQUENO PORTE     |
+| [3] PORTE MÉDIO       |
+| [4] PORTE GRANDE      |
+| [5] PORTE GIGANTE     |
+| [0] VOLTAR            |
+=========================
+""")
+        op = int(input("Selecione o porte do animal: "))
     
-    match op:
-        case 0:
-            return
-        case 1:
-            porte = "MINI"
-        case 2:
-            porte = "PEQUENO"
-        case 3:
-            porte = "MÉDIO"
-        case 4:
-            porte = "GRANDE"
-        case 5:
-            porte = "GIGANTE"
-        case _:
-            print("   DIGITE UM CÓDIGO VÁLIDO!!!👺")
-    return
+        match op:
+            case 0:
+                return
+            case 1:
+                porte = "MINI"
+            case 2:
+                porte = "PEQUENO"
+            case 3:
+                porte = "MÉDIO"
+            case 4:
+                porte = "GRANDE"
+            case 5:
+                porte = "GIGANTE"
+            case _:
+                print("   DIGITE UM CÓDIGO VÁLIDO!!!👺")
+                return
 
-    animais_info = {
-        "nome": nome_animal,
-        "tipo": animal,
-        "raca": raca_animal,
-        "idade": idade_animal,
-        "sexo": sexo_animal,
-        "cor": cor_animal,
-        "peso": peso_animal,
-        "porte": porte
-    }
+        animais_info = {
+            "nome": nome_animal,
+            "tipo": animal,
+            "raca": raca_animal,
+            "idade": idade_animal,
+            "sexo": sexo_animal,
+            "cor": cor_animal,
+            "peso": peso_animal,
+            "porte": porte
+        }
 
 def listar_animais():
     for animal in lista_de_animais:
@@ -98,9 +98,9 @@ def exibir_opcoes_animal():
     
         match(opcao_animal):
             case 1:
-                cadastrar_cliente()
+                cadastrar_animal()
             case 2:
-                listar_clientes()
+                listar_animais()
             case 3:
                 atualizar_animal()
             case 4:
