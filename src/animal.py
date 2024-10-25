@@ -87,6 +87,10 @@ def atualizar_animal():
 
 def excluir_animal():
     pass
+<<<<<<< HEAD
+def listar_um_animal():
+    pass
+=======
 
 def listar_um_animal():
     pass 
@@ -113,3 +117,4 @@ def exibir_opcoes_animal():
             case _:
                 print("Opção inválida. Tente novamente")
                 
+>>>>>>> f00a34db7041b56856967bb8f50c4010e39363aa
