@@ -1,16 +1,11 @@
 import json
 import os
+from time import sleep
 
-arquivo = os.path.join(os.path.dirname(__file__), 'animal.json')
+arquivo = os.path.join(os.path.dirname(__file__), 'database', 'animal.json')
+lista_animais = []
 
-# Carregar lista de animais do arquivo, se existir
-if os.path.exists(arquivo):
-    with open(arquivo, 'r') as f:
-        lista_animais = json.load(f)
-else:
-    lista_animais = []
-
-def salvar_animais():
+def salvar_dados():
     with open(arquivo, 'w') as f:
         json.dump(lista_animais, f, indent=4)
 
@@ -38,21 +33,16 @@ def pagina_animal():
 
     match op:
         case 0:
-            return  # Sai da função
+            return 
         case 1:
-            os.system('clear')
             adicionar_animal()
         case 2:
-            os.system('clear')
             listar_animais()
         case 3:
-            os.system('clear')
             atualizar_animal()
         case 4:
-            os.system('clear')
             excluir_animal()
         case 5:
-            os.system('clear')
             listar_um_animal()
         case _:
             print("   DIGITE UM CÓDIGO VÁLIDO!!!👺")
@@ -77,9 +67,9 @@ def adicionar_animal():
 | [0] VOLTAR            |
 =========================
 """)
-    porte_animal_op = int(input("Selecione o porte do animal: "))
+    op = int(input("Selecione o porte do animal: "))
     
-    match porte_animal_op:
+    match op:
         case 0:
             return
         case 1:
@@ -108,14 +98,14 @@ def adicionar_animal():
     }
 
     lista_animais.append(animais_info)
-    salvar_animais()
+    salvar_dados()
 
     op3 = str(input("Você deseja adicionar um novo animal? (S/N) "))
     if op3.lower() == "s":
         adicionar_animal()
 
-def listar_animais():
-    pass
+
+
 def listar_animais():
     pass
 def atualizar_animal():

@@ -1,0 +1,22 @@
+[
+    {
+        "nome": "Nad",
+        "tipo": "gato",
+        "raca": "ciano",
+        "idade": 9,
+        "sexo": "mas",
+        "cor": "pret",
+        "peso": "0",
+        "porte": "MINI"
+    },
+    {
+        "nome": "Mimi",
+        "tipo": "Gato",
+        "raca": "Ra\u00e7a laranja",
+        "idade": 9,
+        "sexo": "Fem",
+        "cor": "Azul",
+        "peso": "3",
+        "porte": "GRANDE"
+    }
+]
