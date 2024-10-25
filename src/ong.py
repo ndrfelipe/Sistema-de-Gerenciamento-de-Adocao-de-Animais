@@ -2,19 +2,20 @@ lista_de_clientes = []
 
 def exibir_menu_ong():
     print('''
-    █▀▀ ░▀░ █▀▀ ▀▀█▀▀ █▀▀ █▀▄▀█ █▀▀█ 　 █▀▀█ █▀▀▄ █▀▀▀ 
-    ▀▀█ ▀█▀ ▀▀█ ░░█░░ █▀▀ █░▀░█ █▄▄█ 　 █░░█ █░░█ █░▀█ 
-    ▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀▀ ▀░░▀ ▀▀▀▀ 
-    🐈🐕''')
+    
+▒█▀▀▀█ ░▀░ █▀▀ ▀▀█▀▀ █▀▀ █▀▄▀█ █▀▀█ 　 █▀▀▄ █▀▀ 　 ▒█▀▀▀█ █▀▀▄ █▀▀▀ 
+░▀▀▀▄▄ ▀█▀ ▀▀█ ░░█░░ █▀▀ █░▀░█ █▄▄█ 　 █░░█ █▀▀ 　 ▒█░░▒█ █░░█ █░▀█ 
+▒█▄▄▄█ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀░ ▀▀▀ 　 ▒█▄▄▄█ ▀░░▀ ▀▀▀▀
+    ''')
     print('''
-        |[1] Cadastro de ONG's parceiras |
-        |[2] Cadastro de vocluntários    |
-        |[3] Registro de adoções         |
-        |[4] Voltar ao menu principal    |
+      |  [1] Cadastro de ONG's parceiras |
+      |  [2] Cadastro de voluntários     |
+      |  [3] Registro de adoções         |
+      |  [4] Voltar ao menu principal    |
     ''')
 
 
-def cadastrar_cliente():
+def cadastrar_ong():
     pergunta = 's'
     while pergunta != "N":   
         nome = input("Digite o nome do cliente: ")
@@ -24,27 +25,20 @@ def cadastrar_cliente():
         print("Usuário adicionado com sucesso. ")
     return 
     
-def listar_clientes():
+def cadastrar_voluntario():
     for cliente in lista_de_clientes:
         print(f"Nome do cliente: {cliente['nome']} | Idade: {cliente['idade']}")
 
-def atualizar_cliente():
+def registrar_adocao():
     pass
-
-def excluir_cliente():
-    pass
-
-def listar_um_cliente():
-    pass
-
 
 #essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
 def exibir_opcoes_ong():
     while True:
         exibir_menu_ong()
-        opcao_cliente = int(input("Informe uma opção: "))
+        opcao_ong = int(input("Informe uma opção: "))
     
-        match(opcao_cliente):
+        match(opcao_ong):
             case 1:
                 cadastrar_ong()
             case 2:
@@ -52,11 +46,7 @@ def exibir_opcoes_ong():
             case 3:
                 registrar_adocao()
             case 4:
-                excluir_cliente()
-            case 5:
-                listar_um_cliente()
-            case 6:
-                print("Voltando ao menu inicial... ")
+                print("Voltando ao menu inicial")
                 break
             case _:
                 print("Opção inválida. Tente novamente")
@@ -65,3 +55,6 @@ def exibir_opcoes_ong():
 
 
     
+   # █▀▀ ░▀░ █▀▀ ▀▀█▀▀ █▀▀ █▀▄▀█ █▀▀█ 　 █▀▀█ █▀▀▄ █▀▀▀ 
+    #▀▀█ ▀█▀ ▀▀█ ░░█░░ █▀▀ █░▀░█ █▄▄█ 　 █░░█ █░░█ █░▀█ 
+   # ▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀▀ ▀░░▀ ▀▀▀▀ 

@@ -1,6 +1,6 @@
 from src.tela_inicial import *
 from src.cliente import *
-
+from src.ong import *
 
 
 def main():
