@@ -1,15 +1,11 @@
 import json
 import os
-from time import sleep
 
 arquivo = os.path.join(os.path.dirname(__file__), 'database', 'animal.json')
-lista_animais = []
 
-def salvar_dados():
-    with open(arquivo, 'w') as f:
-        json.dump(lista_animais, f, indent=4)
+lista_de_animais = []
 
-def pagina_animal():
+def exibir_menu_animal():
     print("""
     ───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
     ───█▒▒░░░░░░░░░▒▒█───
@@ -29,44 +25,29 @@ def pagina_animal():
     print("   | [5] LISTAR UM ANIMAL  |")
     print("   | [0] VOLTAR            |")
     print("   =========================")
-    op = int(input("   | Digite a opção desejada: "))
 
-    match op:
-        case 0:
-            return 
-        case 1:
-            adicionar_animal()
-        case 2:
-            listar_animais()
-        case 3:
-            atualizar_animal()
-        case 4:
-            excluir_animal()
-        case 5:
-            listar_um_animal()
-        case _:
-            print("   DIGITE UM CÓDIGO VÁLIDO!!!👺")
-            pagina_animal()
+def cadastrar_animal():
+    pergunta = 's'
+    while pergunta != "N":
+        nome_animal = str(input("   Digite o nome do animal: "))
+        animal = str(input("   Qual seu animal?: "))
+        raca_animal = str(input("   Qual raça do seu animal?: "))
+        idade_animal = int(input("   Insira a idade do seu animal: "))
+        sexo_animal = str(input("   Insira o sexo do seu animal: "))
+        cor_animal = str(input("   Insira a cor do seu animal: "))
+        peso_animal = str(input("   Insira o peso do seu animal: "))
+        lista_de_animais.append({'Nome:': nome})
 
-def adicionar_animal():
-    nome_animal = str(input("   Digite o nome do animal: "))
-    animal = str(input("   Qual seu animal?: "))
-    raca_animal = str(input("   Qual raça do seu animal?: "))
-    idade_animal = int(input("   Insira a idade do seu animal: "))
-    sexo_animal = str(input("   Insira o sexo do seu animal: "))
-    cor_animal = str(input("   Insira a cor do seu animal: "))
-    peso_animal = str(input("   Insira o peso do seu animal: "))
-
-    print("""
-=========================
-| [1] PORTE MINI        |
-| [2] PEQUENO PORTE     |
-| [3] PORTE MÉDIO       |
-| [4] PORTE GRANDE      |
-| [5] PORTE GIGANTE     |
-| [0] VOLTAR            |
-=========================
-""")
+        print("""
+            =========================
+            | [1] PORTE MINI        |
+            | [2] PEQUENO PORTE     |
+            | [3] PORTE MÉDIO       |
+            | [4] PORTE GRANDE      |
+            | [5] PORTE GIGANTE     |
+            | [0] VOLTAR            |
+            =========================
+            """)
     op = int(input("Selecione o porte do animal: "))
     
     match op:
@@ -84,7 +65,7 @@ def adicionar_animal():
             porte = "GIGANTE"
         case _:
             print("   DIGITE UM CÓDIGO VÁLIDO!!!👺")
-            return
+    return
 
     animais_info = {
         "nome": nome_animal,
@@ -97,20 +78,43 @@ def adicionar_animal():
         "porte": porte
     }
 
-    lista_animais.append(animais_info)
-    salvar_dados()
-
-    op3 = str(input("Você deseja adicionar um novo animal? (S/N) "))
-    if op3.lower() == "s":
-        adicionar_animal()
-
-
-
 def listar_animais():
-    pass
+    for animal in lista_de_animais:
+        print(f"Nome do animal: {animal['nome_animal']} | Tipo: {animal['animal']} | Raça: {animal[raca_animal]} | Idade: {animal['idade']} | Sexo: {animal['sexo']} Cor: {animal['cor']} | Peso: {[peso_animal]} | Porte: {['porte']}")
+
 def atualizar_animal():
     pass
+
 def excluir_animal():
     pass
+<<<<<<< HEAD
 def listar_um_animal():
     pass
+=======
+
+def listar_um_animal():
+    pass 
+
+def exibir_opcoes_animal():
+    while True:
+        exibir_menu_animal()
+        opcao_animal = int(input("Informe uma opção: "))
+    
+        match(opcao_animal):
+            case 1:
+                cadastrar_cliente()
+            case 2:
+                listar_clientes()
+            case 3:
+                atualizar_animal()
+            case 4:
+                excluir_animal()
+            case 5:
+                def listar_um_animal():()
+            case 6:
+                print("Voltando ao menu inicial... ")
+                break
+            case _:
+                print("Opção inválida. Tente novamente")
+                
+>>>>>>> f00a34db7041b56856967bb8f50c4010e39363aa

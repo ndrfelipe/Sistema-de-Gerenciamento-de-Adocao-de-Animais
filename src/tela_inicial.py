@@ -5,7 +5,7 @@ def menu_inicial():
     print(" Seja bem vindo ao sistema de crud.\n")
     
     print(" 1 - Sistema Cliente ")
-    print(" 2 - Sistema Estoque ")
+    print(" 2 - Sistema Animal ")
     print(" 3 - Sistema ONG ")
     print(" 4 - Sair ")
         
@@ -21,10 +21,11 @@ def tela_usuario():
                 exibir_opcoes_cliente()
             case 2:
                 # aqui vai ser chamada a funçao do crud adoc
-                print("CRUD Adoções")
+                exibir_menu_animal()
+                print("CRUD Animais")
             case 3:
                 # aqui vai ser chamada a funçao do crud animais
-                print("CRUD Animais")
+                pass
             case 4:
                 print("Saindo...")
                 break
