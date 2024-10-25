@@ -12,17 +12,21 @@ def exibir_menu_cliente():
 
 def cadastrar_cliente():
     pergunta = 's'
-    while pergunta != "N":   
+    while pergunta != "n" and pergunta!="N":   
+
         nome = input("Digite o nome do cliente: ")
         idade = int(input("Digite a idade do cliente: "))
-        pergunta = input("Deseja cadastrar mais um usuário (S / N) ? ")
-        lista_de_clientes.append({'nome': nome, 'idade': idade})
+        cpf = input("Digite o seu cpf: ")
+
+        lista_de_clientes.append({'nome': nome, 'idade': idade, 'CPF':cpf })
         print("Usuário adicionado com sucesso. ")
+
+        pergunta = input("Deseja cadastrar mais um usuário (S / N) ? ")
     return 
     
 def listar_clientes():
     for cliente in lista_de_clientes:
-        print(f"Nome do cliente: {cliente['nome']} | Idade: {cliente['idade']}")
+        print(f"Nome do cliente: {cliente['nome']} | Idade: {cliente['idade']} | CPF: {cliente['cpf']} ")
 
 def atualizar_cliente():
     pass

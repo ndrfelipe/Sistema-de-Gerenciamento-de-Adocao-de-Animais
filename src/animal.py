@@ -114,5 +114,3 @@ def excluir_animal():
     pass
 def listar_um_animal():
     pass
-
-pagina_animal()
