@@ -1,4 +1,8 @@
-lista_de_clientes = []
+from time import sleep
+import os
+
+lista_de_ong = []
+ponto = 0
 
 def exibir_menu_ong():
     print('''
@@ -8,29 +12,41 @@ def exibir_menu_ong():
 ▒█▄▄▄█ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀░ ▀▀▀ 　 ▒█▄▄▄█ ▀░░▀ ▀▀▀▀
     ''')
     print('''
-      |  [1] Cadastro de ONG's parceiras |
-      |  [2] Cadastro de voluntários     |
-      |  [3] Registro de adoções         |
-      |  [4] Voltar ao menu principal    |
+        |  [1] Cadastro de ONG's parceiras |
+        |  [2] Listar ONG's parceiras      |
+        |  [3] Atualizar dados             |
+        |  [4] Deletar registro de ONG     |
+        |  [5] Voltar ao menu principal    |
     ''')
 
 
 def cadastrar_ong():
-    pergunta = 's'
-    while pergunta != "N":   
-        nome = input("Digite o nome do cliente: ")
-        idade = int(input("Digite a idade do cliente: "))
-        pergunta = input("Deseja cadastrar mais um usuário (S / N) ? ")
-        lista_de_clientes.append({'nome': nome, 'idade': idade})
-        print("Usuário adicionado com sucesso. ")
-    return 
-    
-def cadastrar_voluntario():
-    for cliente in lista_de_clientes:
-        print(f"Nome do cliente: {cliente['nome']} | Idade: {cliente['idade']}")
+    nome = input("Digite o nome da ONG: ")
+    cnpj = input("Digite o CNPJ da ONG: ")
+    endereço = input("Digite o endereço da ONG: ")
+    numero = input("Digite o número de telefone para contato: ")
 
-def registrar_adocao():
+    lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereço, 'numero':numero})
+    print(f"ONG {nome} adicionada com sucesso! ")
+    voltar_ao_menu_principal()
+    
+    
+def listar_ong():
+    for ong in lista_de_ong:
+        print(f"Nome da ong: {ong['nome']} | CNPJ: {ong['cnpj']}")
+
+def atualizar_ong():
     pass
+
+def deletar_ong():
+    pass
+
+def voltar_ao_menu_principal():
+    input('\n--> Digite uma tecla para voltar ao menu: ')
+    print('Voltando...')
+    sleep(2)
+    os.system('cls')
+    exibir_opcoes_ong()
 
 #essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
 def exibir_opcoes_ong():
@@ -42,12 +58,14 @@ def exibir_opcoes_ong():
             case 1:
                 cadastrar_ong()
             case 2:
-                cadastrar_voluntario()
+                listar_ong()
             case 3:
-                registrar_adocao()
+                atualizar_ong()
             case 4:
-                print("Voltando ao menu inicial")
-                break
+                deletar_ong()
+            case 5:
+                print("Voltando ao menu inicial...")
+                sleep(2)
             case _:
                 print("Opção inválida. Tente novamente")
                 

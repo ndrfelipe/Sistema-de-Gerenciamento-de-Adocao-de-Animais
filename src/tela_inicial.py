@@ -26,7 +26,7 @@ def tela_usuario():
                 # aqui vai ser chamada a funçao do crud adoc
                 exibir_opcoes_animal()
             case 3:
-                exibir_menu_ong()
+                exibir_opcoes_ong()
             case 4:
                 print("Saindo...")
                 sleep(2)
