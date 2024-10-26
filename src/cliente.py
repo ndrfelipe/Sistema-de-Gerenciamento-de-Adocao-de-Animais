@@ -1,7 +1,25 @@
-lista_de_clientes = []
+import json
+import os
+from time import sleep
+
+arquivo = os.path.join(os.path.dirname(__file__), 'database', 'cliente.json')
+
+def carregar_dados_clientes():
+    if os.path.exists(arquivo):
+        with open(arquivo, 'r') as file:
+            return json.load(file)
+    else:
+        return []
+
+def salvar_dados_clientes(dados):
+    os.makedirs(os.path.dirname(arquivo), exist_ok=True)
+    with open(arquivo, 'w') as file:
+        json.dump(dados, file, indent=4)
+
 
 def exibir_menu_cliente():
-    print("Sistema Cliente: ")
+    os.system('cls')
+    print("Sistema Cliente: \n")
     print(" 1 - Cadastrar um novo cliente")
     print(" 2 - Listar clientes")
     print(" 3 - Atualizar cliente")
@@ -11,22 +29,23 @@ def exibir_menu_cliente():
 
 
 def cadastrar_cliente():
-    pergunta = 's'
-    while pergunta != "n" and pergunta!="N":   
+    cliente = carregar_dados_clientes()
 
-        nome = input("Digite o nome do cliente: ")
-        idade = int(input("Digite a idade do cliente: "))
-        cpf = input("Digite o seu cpf: ")
+    nome = input("Digite o nome do cliente: ")
+    idade = int(input("Digite a idade do cliente: "))
+    cpf = input("Digite o seu cpf: ")
 
-        lista_de_clientes.append({'nome': nome, 'idade': idade, 'CPF':cpf })
-        print("Usuário adicionado com sucesso. ")
+    cliente.append({'nome': nome, 'idade': idade, 'CPF':cpf })
+    print(f"O usuário {nome} adicionado com sucesso. ")
 
-        pergunta = input("Deseja cadastrar mais um usuário (S / N) ? ")
-    return 
+    salvar_dados_clientes(cliente)
+    voltar_menu_principal()
     
 def listar_clientes():
-    for cliente in lista_de_clientes:
-        print(f"Nome do cliente: {cliente['nome']} | Idade: {cliente['idade']} | CPF: {cliente['cpf']} ")
+    
+    #gabi, faz essa função
+
+    voltar_menu_principal()
 
 def atualizar_cliente():
     pass
@@ -37,11 +56,21 @@ def excluir_cliente():
 def listar_um_cliente():
     pass
 
-def exibir_opcoes_cliente():
-    while True:
+def voltar_menu_principal():
+    input('Digite uma tecla para voltar ao menu: ')
+    sleep(3)
+    exibir_opcoes_cliente()
+
+def opcao_invalida():
+    
+    print("Opção inválida. Tente novamente. ")
+    voltar_menu_principal()
+
+
+def exibir_opcoes_cliente():        
+    try:
         exibir_menu_cliente()
         opcao_cliente = int(input("Informe uma opção: "))
-    
         match(opcao_cliente):
             case 1:
                 cadastrar_cliente()
@@ -55,7 +84,14 @@ def exibir_opcoes_cliente():
                 listar_um_cliente()
             case 6:
                 print("Voltando ao menu inicial... ")
-                break
+                sleep(1)
+                print('.')
+                sleep(1)
+                print('.')
+                sleep(1)
+                print('.')
+                sleep(1)
             case _:
-                print("Opção inválida. Tente novamente")
-                
+                opcao_invalida()
+    except:
+        opcao_invalida()

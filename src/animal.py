@@ -80,41 +80,12 @@ def cadastrar_animal():
 
 def listar_animais():
     for animal in lista_de_animais:
-        print(f"Nome do animal: {animal['nome_animal']} | Tipo: {animal['animal']} | Raça: {animal[raca_animal]} | Idade: {animal['idade']} | Sexo: {animal['sexo']} Cor: {animal['cor']} | Peso: {[peso_animal]} | Porte: {['porte']}")
+        print(f"Nome do animal: {animal['nome_animal']} | Tipo: {animal['animal']} | Raça: {animal['raca_animal']} | Idade: {animal['idade']} | Sexo: {animal['sexo']} Cor: {animal['cor']} | Peso: {['peso_animal']} | Porte: {['porte']}")
 
 def atualizar_animal():
     pass
 
 def excluir_animal():
     pass
-<<<<<<< HEAD
 def listar_um_animal():
     pass
-=======
-
-def listar_um_animal():
-    pass 
-
-def exibir_opcoes_animal():
-    while True:
-        exibir_menu_animal()
-        opcao_animal = int(input("Informe uma opção: "))
-    
-        match(opcao_animal):
-            case 1:
-                cadastrar_animal()
-            case 2:
-                listar_animais()
-            case 3:
-                atualizar_animal()
-            case 4:
-                excluir_animal()
-            case 5:
-                def listar_um_animal():()
-            case 6:
-                print("Voltando ao menu inicial... ")
-                break
-            case _:
-                print("Opção inválida. Tente novamente")
-                
->>>>>>> f00a34db7041b56856967bb8f50c4010e39363aa

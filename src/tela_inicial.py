@@ -1,9 +1,10 @@
 from src.cliente import *
 from src.animal import *
 from src.ong import *
-
+import os
 
 def menu_inicial():
+    os.system('cls')
     print(" Seja bem vindo ao sistema de crud.\n")
     
     print(" 1 - Sistema Cliente ")
@@ -28,6 +29,8 @@ def tela_usuario():
                 exibir_menu_ong()
             case 4:
                 print("Saindo...")
+                sleep(2)
+               
                 break
             case __:
                 print("Opção inválida. Tente novamente")
