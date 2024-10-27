@@ -1,22 +1,22 @@
 [
     {
-        "nome": "Nad",
-        "tipo": "gato",
-        "raca": "ciano",
-        "idade": 9,
-        "sexo": "mas",
-        "cor": "pret",
-        "peso": "0",
-        "porte": "MINI"
+        "nome_animal": "Lufy",
+        "tipo_animal": "Gato",
+        "raca_animal": "vira-lata",
+        "idade_animal": "2",
+        "sexo_animal": "Macho",
+        "cor_animal": "Laranja ",
+        "peso_animal": 9.0,
+        "porte_animal": "MINI"
     },
     {
-        "nome": "Mimi",
-        "tipo": "Gato",
-        "raca": "Ra\u00e7a laranja",
-        "idade": 9,
-        "sexo": "Fem",
-        "cor": "Azul",
-        "peso": "3",
-        "porte": "GRANDE"
+        "nome_animal": "Mary",
+        "tipo_animal": "Lontra",
+        "raca_animal": "Exotica",
+        "idade_animal": "9",
+        "sexo_animal": "Feminino",
+        "cor_animal": "Preto",
+        "peso_animal": 8.0,
+        "porte_animal": "MINI"
     }
 ]

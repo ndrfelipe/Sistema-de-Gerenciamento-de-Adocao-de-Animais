@@ -23,7 +23,6 @@ def tela_usuario():
                 # aqui vai ser chamada a funçao do crud cliente
                 exibir_opcoes_cliente()
             case 2:
-                # aqui vai ser chamada a funçao do crud adoc
                 exibir_opcoes_animal()
             case 3:
                 exibir_opcoes_ong()
