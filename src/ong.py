@@ -16,7 +16,8 @@ def exibir_menu_ong():
         |  [2] Listar ONG's parceiras      |
         |  [3] Atualizar dados             |
         |  [4] Deletar registro de ONG     |
-        |  [5] Voltar ao menu principal    |
+        |  [5] Buscar uma ONG              |
+        |  [6] Voltar ao menu principal    |
     ''')
 
 
@@ -36,9 +37,28 @@ def listar_ong():
         print(f"Nome da ong: {ong['nome']} | CNPJ: {ong['cnpj']}")
 
 def atualizar_ong():
-    pass
+    atualizacao = input("Digite o CNPJ da ONG que deseja atualizar: ")
+    novo_nome = input("Atualize o nome da ONG: ")
+    novo_cnpj = input("Atualize o CNPJ da ONG: ")
+    novo_endereço = input("Atualize o endereço da ONG: ")
+    novo_numero = input("Atualize o número da ONG: ")
+    sleep(2)
+    print("Atualizando os dados...")
+    sleep(2)
+    print("Atualização feita com sucesso!")
+
+    voltar_ao_menu_principal()
 
 def deletar_ong():
+    deletar = input("Digite o CNPJ da ONG que deseja deletar: ")
+    sleep(2)
+    print("Excluindo ONG...")
+    sleep(2)
+    print("ONG excluída com sucesso!")
+    
+    voltar_ao_menu_principal()
+
+def buscar_ong():
     pass
 
 def voltar_ao_menu_principal():
@@ -64,6 +84,8 @@ def exibir_opcoes_ong():
             case 4:
                 deletar_ong()
             case 5:
+                buscar_ong()
+            case 6:
                 print("Voltando ao menu inicial...")
                 sleep(2)
             case _:
