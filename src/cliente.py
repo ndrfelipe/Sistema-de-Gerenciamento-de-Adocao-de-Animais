@@ -49,7 +49,7 @@ def cadastrar_cliente():
     
 def listar_clientes():
     clientes = carregar_dados_clientes()
-    print("Lista dos clientes: ")
+    print("Lista dos clientes: ",clientes)
     for cliente in clientes:
      print(f" nome: {cliente['nome']}, idade: {cliente['idade']}, cpf: {cliente['cpf']}, email: {cliente['email']}, telefone: {cliente['telefone']}, endereço: {cliente['endereço']}, renda: {cliente['renda']}, profissão: {cliente['profissão']}")
 
