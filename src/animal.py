@@ -1,7 +1,7 @@
 import json
 import os 
 from time import sleep
-
+ 
 arquivo = os.path.join(os.path.dirname (__file__), 'database', 'animal.json')
 
 def carregar_dados_animais():

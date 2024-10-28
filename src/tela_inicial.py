@@ -28,7 +28,7 @@ def tela_usuario():
                 exibir_opcoes_ong()
             case 4:
                 print("Saindo...")
-                sleep(2)
+                sleep(1)
                
                 break
             case __:
