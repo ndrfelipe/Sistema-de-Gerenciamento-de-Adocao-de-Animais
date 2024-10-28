@@ -59,16 +59,15 @@ def cadastrar_ong():
     
 def listar_ong():
     lista_de_ong = carregar_dados_ongs()
-    
+
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
         for ong in lista_de_ong:
-            print(f"nome: {ong['nome']}, cnpj: {ong['cnpj']}, 
-            endereço: {ong['endereco']}, número: {ong['numero']}")
+            print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Número: {ong['numero']}\n")
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
-        voltar_menu_principal()
-
+    
+    voltar_menu_principal()
 
 def atualizar_ong():
     exibir_subtitulo("Atualização de ONG")
@@ -95,7 +94,24 @@ def deletar_ong():
     voltar_menu_principal()
 
 def buscar_ong():
+    lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Buscar ONG")
+    buscando_ong = input("Digite o nome ou CNPJ da ONG: ")
+
+    busca = [
+        ong for ong in lista_de_ong 
+        if ong['nome'].lower() == buscando_ong.lower() or ong['CNPJ'].strip() == buscando_ong.strip()
+    ]
+
+    if busca:
+        print("ONG(s) encontrada(s):")
+        for ong in busca:
+            print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Número: {ong['numero']}\n")
+    else:
+        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+
+    voltar_menu_principal()
+
 
 def voltar_menu_principal():
     input("\n--> Digite uma tecla para voltar ao menu: ")
