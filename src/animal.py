@@ -134,7 +134,16 @@ def excluir_animal(nome_animal):
     print("ANIMAL EXCLUÍDO COM SUCESSO! 🦝")
     voltar_menu_principal()
 
-#def listar_um_animal(): #Ainda não consegui fazer
+def listar_um_animal():
+    nome_animal = input("DIGITE O NOME DO ANIMAL QUE DESEJA BUSCAR: ")
+    animais = carregar_dados_animais()
+    
+    for animal in animais:
+        if animal['nome_animal'].lower() == nome_animal.lower():
+            print(f"NOME: {animal['nome_animal']}, TIPO: {animal['tipo_animal']}, RAÇA: {animal['raca_animal']}, IDADE: {animal['idade_animal']}, SEXO: {animal['sexo_animal']}, COR: {animal['cor_animal']}, PESO: {animal['peso_animal']}, PORTE: {animal['porte_animal']}")
+            break
+    else:
+        print("ANIMAL NÃO ENCONTRADO.")
 
 def voltar_menu_principal():
     input("APERTE ENTER PARA VOLTAR AO MENU.:")
