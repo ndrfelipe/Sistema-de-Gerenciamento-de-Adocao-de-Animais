@@ -4,6 +4,18 @@ import json
 
 arquivo = os.path.join(os.path.dirname(__file__), 'database', 'ong.json')
 
+def carregar_dados_ongs():
+    if os.path.exists(arquivo):
+        with open(arquivo, 'r') as file:
+            return json.load(file)
+    else:
+        return []
+
+def salvar_dados_ongs(dados):
+    os.makedirs(os.path.dirname(arquivo), exist_ok=True)
+    with open(arquivo, 'w') as file:
+        json.dump(dados, file, indent=4)
+
 lista_de_ong = []
 
 def exibir_menu_ong():
@@ -39,7 +51,10 @@ def cadastrar_ong():
 
     lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereço, 'numero':numero})
     print(f"ONG {nome} adicionada com sucesso! ")
+    
+    salvar_dados_ongs(lista_de_ong)
     voltar_ao_menu_principal()
+
     
     
 def listar_ong():
