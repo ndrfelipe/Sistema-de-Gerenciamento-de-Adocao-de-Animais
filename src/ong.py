@@ -2,7 +2,6 @@ from time import sleep
 import os
 
 lista_de_ong = []
-ponto = 0
 
 def exibir_menu_ong():
     print('''
@@ -20,8 +19,16 @@ def exibir_menu_ong():
         |  [6] Voltar ao menu principal    |
     ''')
 
+def exibir_subtitulo(texto):
+    os.system('cls')
+    linha = '-'*(len(texto))
+    print(linha)
+    print(texto)
+    print(linha)
+    print()
 
 def cadastrar_ong():
+    exibir_subtitulo("Cadastro de ONG")
     nome = input("Digite o nome da ONG: ")
     cnpj = input("Digite o CNPJ da ONG: ")
     endereço = input("Digite o endereço da ONG: ")
@@ -33,10 +40,20 @@ def cadastrar_ong():
     
     
 def listar_ong():
+    exibir_subtitulo("Linstando ONG's")
+    print(f'{"Nome".ljust(22)} | {"CNPJ".ljust(22)} | {"Endereço".ljust(37)} | {"Telefone".ljust(22)}\n')
+
     for ong in lista_de_ong:
-        print(f"Nome da ong: {ong['nome']} | CNPJ: {ong['cnpj']}")
+        nome = ong['nome']
+        cnpj = ong['CNPJ']
+        endereço = ong['endereço']
+        numero = ong['numero']
+        print(f'- {nome.ljust(20)} | {cnpj.ljust(20)} | {endereço.ljust(35)} | {numero.ljust(20)}')
+
+    voltar_ao_menu_principal()
 
 def atualizar_ong():
+    exibir_subtitulo('Atualização de ONG')
     atualizacao = input("Digite o CNPJ da ONG que deseja atualizar: ")
     novo_nome = input("Atualize o nome da ONG: ")
     novo_cnpj = input("Atualize o CNPJ da ONG: ")
@@ -50,6 +67,7 @@ def atualizar_ong():
     voltar_ao_menu_principal()
 
 def deletar_ong():
+    exibir_subtitulo('Deletar ONG')
     deletar = input("Digite o CNPJ da ONG que deseja deletar: ")
     sleep(2)
     print("Excluindo ONG...")
