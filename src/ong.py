@@ -1,8 +1,22 @@
 from time import sleep
 import os
+import json
+
+arquivo = os.path.join(os.path.dirname(__file__), 'database', 'ong.json')
+
+def carregar_dados_ongs():
+    if os.path.exists(arquivo):
+        with open(arquivo, 'r') as file:
+            return json.load(file)
+    else:
+        return []
+
+def salvar_dados_ongs(dados):
+    os.makedirs(os.path.dirname(arquivo), exist_ok=True)
+    with open(arquivo, 'w') as file:
+        json.dump(dados, file, indent=4)
 
 lista_de_ong = []
-ponto = 0
 
 def exibir_menu_ong():
     print('''
@@ -20,8 +34,16 @@ def exibir_menu_ong():
         |  [6] Voltar ao menu principal    |
     ''')
 
+def exibir_subtitulo(texto):
+    os.system('cls')
+    linha = '-'*(len(texto))
+    print(linha)
+    print(texto)
+    print(linha)
+    print()
 
 def cadastrar_ong():
+    exibir_subtitulo("Cadastro de ONG")
     nome = input("Digite o nome da ONG: ")
     cnpj = input("Digite o CNPJ da ONG: ")
     endereço = input("Digite o endereço da ONG: ")
@@ -29,14 +51,27 @@ def cadastrar_ong():
 
     lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereço, 'numero':numero})
     print(f"ONG {nome} adicionada com sucesso! ")
+    
+    salvar_dados_ongs(lista_de_ong)
     voltar_ao_menu_principal()
+
     
     
 def listar_ong():
+    exibir_subtitulo("Listando ONG's")
+    print(f'{"Nome".ljust(22)} | {"CNPJ".ljust(22)} | {"Endereço".ljust(37)} | {"Telefone".ljust(22)}\n')
+
     for ong in lista_de_ong:
-        print(f"Nome da ong: {ong['nome']} | CNPJ: {ong['cnpj']}")
+        nome = ong['nome']
+        cnpj = ong['CNPJ']
+        endereço = ong['endereço']
+        numero = ong['numero']
+        print(f'- {nome.ljust(20)} | {cnpj.ljust(20)} | {endereço.ljust(35)} | {numero.ljust(20)}')
+
+    voltar_ao_menu_principal()
 
 def atualizar_ong():
+    exibir_subtitulo("Atualização de ONG")
     atualizacao = input("Digite o CNPJ da ONG que deseja atualizar: ")
     novo_nome = input("Atualize o nome da ONG: ")
     novo_cnpj = input("Atualize o CNPJ da ONG: ")
@@ -50,6 +85,7 @@ def atualizar_ong():
     voltar_ao_menu_principal()
 
 def deletar_ong():
+    exibir_subtitulo("Deletar ONG")
     deletar = input("Digite o CNPJ da ONG que deseja deletar: ")
     sleep(2)
     print("Excluindo ONG...")
@@ -59,11 +95,11 @@ def deletar_ong():
     voltar_ao_menu_principal()
 
 def buscar_ong():
-    pass
+    exibir_subtitulo("Buscar ONG")
 
 def voltar_ao_menu_principal():
-    input('\n--> Digite uma tecla para voltar ao menu: ')
-    print('Voltando...')
+    input("\n--> Digite uma tecla para voltar ao menu: ")
+    print("Voltando...")
     sleep(2)
     os.system('cls')
     exibir_opcoes_ong()
@@ -92,9 +128,3 @@ def exibir_opcoes_ong():
                 print("Opção inválida. Tente novamente")
                 
 
-
-
-    
-   # █▀▀ ░▀░ █▀▀ ▀▀█▀▀ █▀▀ █▀▄▀█ █▀▀█ 　 █▀▀█ █▀▀▄ █▀▀▀ 
-    #▀▀█ ▀█▀ ▀▀█ ░░█░░ █▀▀ █░▀░█ █▄▄█ 　 █░░█ █░░█ █░▀█ 
-   # ▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀▀ ▀░░▀ ▀▀▀▀ 
