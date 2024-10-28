@@ -14,7 +14,7 @@ def carregar_dados_clientes():
 def salvar_dados_clientes(dados):
     os.makedirs(os.path.dirname(arquivo), exist_ok=True)
     with open(arquivo, 'w') as file:
-        json.dump(dados, file, indent=4)
+        json.dump(dados, file, indent=4, ensure_ascii=False)
 
 
 def exibir_menu_cliente():
@@ -32,31 +32,46 @@ def cadastrar_cliente():
     clientes = carregar_dados_clientes()
 
     nome = input("Digite o nome do cliente: ")
-    idade = int(input("Digite a idade do cliente: "))
+    idade = input("Digite a idade do cliente: ")
     cpf = input("Digite o seu cpf: ")
     email = input("Digite seu email: ")
-    telefone = int(input("Digite seu número de telefone: "))
-    endereço = input("Digite seu endereço: ")
-    renda = int(input("Digite sua renda familiar: "))
+    telefone = input("Digite seu número de telefone: ")
+    endereco = input("Digite seu endereço: ")
+    renda = input("Digite sua renda familiar: ")
     profissao = input("Digite sua profissão: ")
-    clientes.append({'nome': nome, 'idade': idade, 'cpf':cpf, 'email':email, 'telefone':telefone, 'endereço':endereço, 'renda':renda, 'profissao':profissao })
+    
+    clientes.append({'nome': nome,
+                     'idade': idade,
+                     'cpf':cpf,
+                     'email':email,
+                     'telefone':telefone,
+                     'endereco':endereco,
+                     'renda':renda,
+                     'profissao':profissao })
+    
     print(f"O usuário {nome} adicionado com sucesso. ")
 
     salvar_dados_clientes(clientes)
     voltar_menu_principal()
     
-    
-    
 def listar_clientes():
-    clientes = carregar_dados_clientes()
-    print("Lista dos clientes: ",clientes)
-    for cliente in clientes:
-     print(f" nome: {cliente['nome']}, idade: {cliente['idade']}, cpf: {cliente['cpf']}, email: {cliente['email']}, telefone: {cliente['telefone']}, endereço: {cliente['endereço']}, renda: {cliente['renda']}, profissão: {cliente['profissão']}")
+    os.system('cls')
+    lista_clientes = carregar_dados_clientes()
+    if lista_clientes:
+        print(f"Lista de Clientes \n")
+        print(f"{'NOME'.ljust(30)} | {'IDADE'.ljust(10)} | {'CPF'.ljust(15)} | {'EMAIL'.ljust(30)} | {'TELEFONE'.ljust(15)} | {'ENDEREÇO'.ljust(30)} | {'RENDA'.ljust(10)} | {'PROFISSÃO'}")
+        for cliente in lista_clientes:
+
+            try:
+                print(f"{cliente.get('nome', '').ljust(30)} | {str(cliente.get('idade', '')).ljust(10)} | {str(cliente.get('cpf', '')).ljust(15)} | {cliente.get('email', '').ljust(30)} | {str(cliente.get('telefone', '')).ljust(15)} | {str(cliente.get('endereco', '')).ljust(30)} | R${str(cliente.get('renda', '')).ljust(10)} | {cliente.get('profissao', '')}")
+
+            except Exception as e:
+                print(f"Erro ao processar cliente: {e}")
+                continue
+    else:
+        print("Nenhum usuário encontrado.")
 
     voltar_menu_principal()
-
-    
-    #gabi, faz essa função
 
     
 
@@ -71,7 +86,7 @@ def listar_um_cliente():
 
 def voltar_menu_principal():
     input('Digite uma tecla para voltar ao menu: ')
-    sleep(3)
+    sleep(1)
     exibir_opcoes_cliente()
 
 def opcao_invalida():
@@ -97,12 +112,6 @@ def exibir_opcoes_cliente():
                 listar_um_cliente()
             case 6:
                 print("Voltando ao menu inicial... ")
-                sleep(1)
-                print('.')
-                sleep(1)
-                print('.')
-                sleep(1)
-                print('.')
                 sleep(1)
             case _:
                 opcao_invalida()
