@@ -29,23 +29,36 @@ def exibir_menu_cliente():
 
 
 def cadastrar_cliente():
-    cliente = carregar_dados_clientes()
+    clientes = carregar_dados_clientes()
 
     nome = input("Digite o nome do cliente: ")
     idade = int(input("Digite a idade do cliente: "))
     cpf = input("Digite o seu cpf: ")
-
-    cliente.append({'nome': nome, 'idade': idade, 'CPF':cpf })
+    email = input("Digite seu email: ")
+    telefone = int(input("Digite seu número de telefone: "))
+    endereço = input("Digite seu endereço: ")
+    renda = int(input("Digite sua renda familiar: "))
+    profissao = input("Digite sua profissão: ")
+    clientes.append({'nome': nome, 'idade': idade, 'cpf':cpf, 'email':email, 'telefone':telefone, 'endereço':endereço, 'renda':renda, 'profissao':profissao })
     print(f"O usuário {nome} adicionado com sucesso. ")
 
-    salvar_dados_clientes(cliente)
+    salvar_dados_clientes(clientes)
     voltar_menu_principal()
     
+    
+    
 def listar_clientes():
+    clientes = carregar_dados_clientes()
+    print("Lista dos clientes: ")
+    for cliente in clientes:
+     print(f" nome: {cliente['nome']}, idade: {cliente['idade']}, cpf: {cliente['cpf']}, email: {cliente['email']}, telefone: {cliente['telefone']}, endereço: {cliente['endereço']}, renda: {cliente['renda']}, profissão: {cliente['profissão']}")
+
+    voltar_menu_principal()
+
     
     #gabi, faz essa função
 
-    voltar_menu_principal()
+    
 
 def atualizar_cliente():
     pass

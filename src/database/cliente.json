@@ -8,5 +8,15 @@
         "nome": "Dayvid",
         "idade": 20,
         "CPF": "145226226"
+    },
+    {
+        "nome": "Gabi",
+        "idade": 18,
+        "CPF": "111.333.777",
+        "Email": "gabenjdeud",
+        "Telefone": 81984196336,
+        "Endere\u00e7o": "r ddd b ccc",
+        "Renda": 0,
+        "Profissao": "est"
     }
 ]
