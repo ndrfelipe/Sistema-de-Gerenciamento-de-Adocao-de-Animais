@@ -42,7 +42,7 @@ def cadastrar_animal():
     animais = carregar_dados_animais()
 
     nome_animal  = str(input("  DIGITE O NOME DO ANIMAL: "))
-    tipo_animal  = str(input("  QUAL o ANIMAL? "))
+    tipo_animal  = str(input("  QUAL O ANIMAL? "))
     raca_animal  = str(input("  QUAL A RAÇA DO ANIMAL? "))
     idade_animal = str(input("  QUAL A IDADE DO ANIMAL? "))
     sexo_animal  = str(input("  QUAL O SEXO DO ANIMAL? "))

@@ -1,5 +1,8 @@
 from time import sleep
 import os
+import json
+
+arquivo = os.path.join(os.path.dirname(__file__), 'database', 'ong.json')
 
 lista_de_ong = []
 
@@ -40,7 +43,7 @@ def cadastrar_ong():
     
     
 def listar_ong():
-    exibir_subtitulo("Linstando ONG's")
+    exibir_subtitulo("Listando ONG's")
     print(f'{"Nome".ljust(22)} | {"CNPJ".ljust(22)} | {"Endereço".ljust(37)} | {"Telefone".ljust(22)}\n')
 
     for ong in lista_de_ong:
@@ -53,7 +56,7 @@ def listar_ong():
     voltar_ao_menu_principal()
 
 def atualizar_ong():
-    exibir_subtitulo('Atualização de ONG')
+    exibir_subtitulo("Atualização de ONG")
     atualizacao = input("Digite o CNPJ da ONG que deseja atualizar: ")
     novo_nome = input("Atualize o nome da ONG: ")
     novo_cnpj = input("Atualize o CNPJ da ONG: ")
@@ -67,7 +70,7 @@ def atualizar_ong():
     voltar_ao_menu_principal()
 
 def deletar_ong():
-    exibir_subtitulo('Deletar ONG')
+    exibir_subtitulo("Deletar ONG")
     deletar = input("Digite o CNPJ da ONG que deseja deletar: ")
     sleep(2)
     print("Excluindo ONG...")
@@ -77,11 +80,11 @@ def deletar_ong():
     voltar_ao_menu_principal()
 
 def buscar_ong():
-    pass
+    exibir_subtitulo("Buscar ONG")
 
 def voltar_ao_menu_principal():
-    input('\n--> Digite uma tecla para voltar ao menu: ')
-    print('Voltando...')
+    input("\n--> Digite uma tecla para voltar ao menu: ")
+    print("Voltando...")
     sleep(2)
     os.system('cls')
     exibir_opcoes_ong()
@@ -110,9 +113,3 @@ def exibir_opcoes_ong():
                 print("Opção inválida. Tente novamente")
                 
 
-
-
-    
-   # █▀▀ ░▀░ █▀▀ ▀▀█▀▀ █▀▀ █▀▄▀█ █▀▀█ 　 █▀▀█ █▀▀▄ █▀▀▀ 
-    #▀▀█ ▀█▀ ▀▀█ ░░█░░ █▀▀ █░▀░█ █▄▄█ 　 █░░█ █░░█ █░▀█ 
-   # ▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀▀ ▀░░▀ ▀▀▀▀ 
