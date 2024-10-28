@@ -62,8 +62,15 @@ def listar_ong():
 
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
+        print(f'{'\033[33m'}{"Nome".ljust(22)} | {"CNPJ".ljust(20)} | {"Endereço".ljust(35)} | {"Telefone".ljust(20)}{'\033[m'}\n')
         for ong in lista_de_ong:
-            print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Número: {ong['numero']}\n")
+            nome = ong['nome']
+            cnpj = ong['CNPJ']
+            endereço = ong['endereço']
+            numero = ong['numero']
+
+            print(f'- {nome.ljust(20)} | {cnpj.ljust(20)} | {endereço.ljust(35)} | {numero.ljust(20)}\n')
+
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
     
