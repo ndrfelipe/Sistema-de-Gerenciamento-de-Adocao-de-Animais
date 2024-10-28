@@ -16,8 +16,6 @@ def salvar_dados_ongs(dados):
     with open(arquivo, 'w') as file:
         json.dump(dados, file, indent=4)
 
-lista_de_ong = []
-
 def exibir_menu_ong():
     print('''
     
@@ -43,32 +41,34 @@ def exibir_subtitulo(texto):
     print()
 
 def cadastrar_ong():
+    lista_de_ong = carregar_dados_ongs()
+   
     exibir_subtitulo("Cadastro de ONG")
     nome = input("Digite o nome da ONG: ")
     cnpj = input("Digite o CNPJ da ONG: ")
-    endereço = input("Digite o endereço da ONG: ")
+    endereco = input("Digite o endereço da ONG: ")
     numero = input("Digite o número de telefone para contato: ")
 
-    lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereço, 'numero':numero})
-    print(f"ONG {nome} adicionada com sucesso! ")
-    
+    lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereco, 'numero':numero})
     salvar_dados_ongs(lista_de_ong)
-    voltar_ao_menu_principal()
+    
+    print(f"ONG {nome} adicionada com sucesso! ")
+    voltar_menu_principal()
 
     
     
 def listar_ong():
-    exibir_subtitulo("Listando ONG's")
-    print(f'{"Nome".ljust(22)} | {"CNPJ".ljust(22)} | {"Endereço".ljust(37)} | {"Telefone".ljust(22)}\n')
+    lista_de_ong = carregar_dados_ongs()
+    
+    if lista_de_ong:
+        exibir_subtitulo("Lista das ONG's")
+        for ong in lista_de_ong:
+            print(f"nome: {ong['nome']}, cnpj: {ong['cnpj']}, 
+            endereço: {ong['endereco']}, número: {ong['numero']}")
+    else:
+        print("😒 NENHUM USUÁRIO CADASTRADO.")
+        voltar_menu_principal()
 
-    for ong in lista_de_ong:
-        nome = ong['nome']
-        cnpj = ong['CNPJ']
-        endereço = ong['endereço']
-        numero = ong['numero']
-        print(f'- {nome.ljust(20)} | {cnpj.ljust(20)} | {endereço.ljust(35)} | {numero.ljust(20)}')
-
-    voltar_ao_menu_principal()
 
 def atualizar_ong():
     exibir_subtitulo("Atualização de ONG")
@@ -82,7 +82,7 @@ def atualizar_ong():
     sleep(2)
     print("Atualização feita com sucesso!")
 
-    voltar_ao_menu_principal()
+    voltar_menu_principal()
 
 def deletar_ong():
     exibir_subtitulo("Deletar ONG")
@@ -92,21 +92,27 @@ def deletar_ong():
     sleep(2)
     print("ONG excluída com sucesso!")
     
-    voltar_ao_menu_principal()
+    voltar_menu_principal()
 
 def buscar_ong():
     exibir_subtitulo("Buscar ONG")
 
-def voltar_ao_menu_principal():
+def voltar_menu_principal():
     input("\n--> Digite uma tecla para voltar ao menu: ")
     print("Voltando...")
     sleep(2)
     os.system('cls')
     exibir_opcoes_ong()
 
+def opcao_invalida():
+    os.system('cls')
+    print("Opção inválida! Voltando ao menu...")
+    sleep(2)
+    voltar_menu_principal()
+
 #essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
 def exibir_opcoes_ong():
-    while True:
+    try:
         exibir_menu_ong()
         opcao_ong = int(input("Informe uma opção: "))
     
@@ -125,6 +131,7 @@ def exibir_opcoes_ong():
                 print("Voltando ao menu inicial...")
                 sleep(2)
             case _:
-                print("Opção inválida. Tente novamente")
-                
+                opcao_invalida()
+    except:
+            opcao_invalida() 
 
