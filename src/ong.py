@@ -87,6 +87,7 @@ def atualizar_ong():
 
     voltar_menu_principal()
 
+
 def deletar_ong():
     lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Deletar ONG")
@@ -100,7 +101,9 @@ def deletar_ong():
         print("ONG encontrada:")
         for ong in deletar:
             print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Telefone: {ong['numero']} ")
-            lista_de_ong = [ong for ong in lista_de_ong if ong not in deletar]
+            
+            lista_de_ong.remove(ong)  
+            
             print("Excluindo ONG...")
             sleep(2)
             print("ONG deletada com sucesso. ✨")
@@ -143,7 +146,6 @@ def opcao_invalida():
     sleep(2)
     voltar_menu_principal()
 
-#essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
 def exibir_opcoes_ong():
     try:
         exibir_menu_ong()
