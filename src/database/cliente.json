@@ -20,7 +20,6 @@
         "profissao": "estudante"
     },
     {
-<<<<<<< HEAD
         "nome": "",
         "idade": "",
         "CPF": "111.333.777",
@@ -45,15 +44,5 @@
         "endere\u00e7o": "recife",
         "renda": 0,
         "profissao": "est"
-=======
-        "nome": "André Felipe",
-        "idade": "19",
-        "cpf": "130.657.094-81",
-        "email": "ndrfelipebraga@gmail.com",
-        "telefone": "81985145187",
-        "endereco": "rua ribeiro",
-        "renda": "3000",
-        "profissao": "Estudante"
->>>>>>> 59979fc141554eeb71208312208d99f09c2b0c9d
     }
 ]

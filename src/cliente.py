@@ -74,12 +74,6 @@ def listar_clientes():
     voltar_menu_principal()
 
     
-<<<<<<< HEAD
-    #ainda precisa de ajuste na parte de opçao invalida
-
-    
-=======
->>>>>>> 59979fc141554eeb71208312208d99f09c2b0c9d
 
 def atualizar_cliente():
     clientes = carregar_dados_clientes()
@@ -95,7 +89,7 @@ def atualizar_cliente():
             cliente['renda'] = str(input("Digite a nova renda: "))
             cliente['profissao'] = input("Digite a nova profissão: ")
             
-            salvar_dados_clientes(clientes)
+            salvar_dados_clientes(cliente)
             print("\nCliente atualizado com sucesso!")
     else:
             print("Cliente não encontrado.")
