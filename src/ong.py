@@ -60,7 +60,7 @@ def listar_ong():
     lista_de_ong = carregar_dados_ongs()
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
-        print(f"{'\033[33m'}{"Nome".ljust(22)} | {"CNPJ".ljust(20)} | {"Endereço".ljust(35)} | {"Telefone".ljust(20)}{'\033[m'}")
+        print(f"{'Nome'.ljust(22)} | {'CNPJ'.ljust(20)} | {'Endereço'.ljust(35)} | {'Telefone'.ljust(20)}")
         
         for ong in lista_de_ong:
             nome = ong['nome']
