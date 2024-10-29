@@ -59,7 +59,7 @@ def listar_clientes():
     lista_clientes = carregar_dados_clientes()
     if lista_clientes:
         print(f"Lista de Clientes \n")
-        print(f"{'NOME'.ljust(20)} | {'IDADE'.ljust(5)} | {'CPF'.ljust(15)} | {'EMAIL'.ljust(25)} | {'TELEFONE'.ljust(15)} | {'ENDEREÇO'.ljust(25)} | {'RENDA'.ljust(10)} | {'PROFISSÃO'}")
+        print(f"{'nome'.ljust(20)} | {'idade'.ljust(5)} | {'cpf'.ljust(15)} | {'email'.ljust(25)} | {'telefone'.ljust(15)} | {'endereco'.ljust(25)} | {'renda'.ljust(10)} | {'profissao'}")
         for cliente in lista_clientes:
 
             try:
@@ -85,14 +85,16 @@ def atualizar_cliente():
             cliente['cpf'] = str(input("Digite o novo CPF: "))
             cliente['email'] = input("Digite o novo email: ")
             cliente['telefone'] = input("Digite o novo telefone: ")
-            cliente['endereço'] = str(input("Digite o novo endereço: "))
+            cliente['endereco'] = str(input("Digite o novo endereço: "))
             cliente['renda'] = str(input("Digite a nova renda: "))
             cliente['profissao'] = input("Digite a nova profissão: ")
             
             salvar_dados_clientes(clientes)
             print("\nCliente atualizado com sucesso!")
-        else:
-            print("Cliente não encontrado.")
+            break
+            
+    else:
+        print("Cliente não encontrado.")
 
 
     voltar_menu_principal()
