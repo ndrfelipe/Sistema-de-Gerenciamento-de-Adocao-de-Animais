@@ -59,11 +59,11 @@ def listar_clientes():
     lista_clientes = carregar_dados_clientes()
     if lista_clientes:
         print(f"Lista de Clientes \n")
-        print(f"{'NOME'.ljust(30)} | {'IDADE'.ljust(10)} | {'CPF'.ljust(15)} | {'EMAIL'.ljust(30)} | {'TELEFONE'.ljust(15)} | {'ENDEREÇO'.ljust(30)} | {'RENDA'.ljust(10)} | {'PROFISSÃO'}")
+        print(f"{'NOME'.ljust(20)} | {'IDADE'.ljust(5)} | {'CPF'.ljust(15)} | {'EMAIL'.ljust(25)} | {'TELEFONE'.ljust(15)} | {'ENDEREÇO'.ljust(25)} | {'RENDA'.ljust(10)} | {'PROFISSÃO'}")
         for cliente in lista_clientes:
 
             try:
-                print(f"{cliente.get('nome', '').ljust(30)} | {str(cliente.get('idade', '')).ljust(10)} | {str(cliente.get('cpf', '')).ljust(15)} | {cliente.get('email', '').ljust(30)} | {str(cliente.get('telefone', '')).ljust(15)} | {str(cliente.get('endereco', '')).ljust(30)} | R${str(cliente.get('renda', '')).ljust(10)} | {cliente.get('profissao', '')}")
+                print(f"{cliente.get('nome', '').ljust(20)} | {str(cliente.get('idade', '')).ljust(5)} | {str(cliente.get('cpf', '')).ljust(15)} | {cliente.get('email', '').ljust(25)} | {str(cliente.get('telefone', '')).ljust(15)} | {str(cliente.get('endereco', '')).ljust(25)} | R${str(cliente.get('renda', '')).ljust(10)} | {cliente.get('profissao', '')}")
 
             except Exception as e:
                 print(f"Erro ao processar cliente: {e}")
@@ -79,7 +79,7 @@ def atualizar_cliente():
     clientes = carregar_dados_clientes()
     cadastro_antigo = str(input("Digite o CPF da pessoa que deseja atualizar os dados: "))
     for cliente in clientes:
-        if cliente['CPF']== cadastro_antigo:
+        if cliente['cpf']== cadastro_antigo:
             cliente['nome'] = input("Digite o novo nome: ")
             cliente['idade'] = str(input("Digite a nova idade: "))
             cliente['cpf'] = str(input("Digite o novo CPF: "))
@@ -89,9 +89,9 @@ def atualizar_cliente():
             cliente['renda'] = str(input("Digite a nova renda: "))
             cliente['profissao'] = input("Digite a nova profissão: ")
             
-            salvar_dados_clientes(cliente)
+            salvar_dados_clientes(clientes)
             print("\nCliente atualizado com sucesso!")
-    else:
+        else:
             print("Cliente não encontrado.")
 
 
