@@ -1,7 +1,7 @@
 import json
 import os 
 from time import sleep
-
+ 
 arquivo = os.path.join(os.path.dirname (__file__), 'database', 'animal.json')
 
 def carregar_dados_animais():
@@ -39,6 +39,7 @@ def exibir_menu_animal():
     print("   =========================")
 
 def cadastrar_animal():
+
     animais = carregar_dados_animais()
 
     nome_animal  = str(input("    DIGITE O NOME DO ANIMAL: "))
@@ -94,13 +95,23 @@ def cadastrar_animal():
     print("ANIMAL ADICIONADO COM SUCESSO! 🐶")
     voltar_menu_principal()
 
+
+
 def listar_animais():
     animais = carregar_dados_animais()
     if animais:
         for animal in animais:
-            print(f"NOME: {animal['nome_animal']}, TIPO:  {animal ['tipo_animal']}, RAÇA:  {animal ['raca_animal']}, IDADE: {animal ['idade_animal']}, SEXO:  {animal ['sexo_animal']}, COR:   {animal ['cor_animal']}, PESO:  {animal ['peso_animal']}, PORTE: {animal ['porte_animal']}")
+            try:
+                print(f"LISTA DE ANIMAIS \n")
+                print(f"{'NOME'.ljust(10)} | {'TIPO'.ljust(10)} | {'RAÇA'.ljust(10)} | {'IDADE'.ljust(10)} | {'SEXO '.ljust(10)} | {'COR'.ljust(10)} | {'PESO'.ljust(10)} | {'PORTE '.ljust(10)}")
+                
+                print(f"{animal.get('nome_animal', '').ljust(10)} | {str(animal.get('tipo_animal', '')).ljust(10)} | {str(animal.get('raca_animal', '')).ljust(10)} | {animal.get('idade_animal', '').ljust(10)} | {str(animal.get('sexo_animal', '')).ljust(10)} | {str(animal.get('cor_animal', '')).ljust(10)} | {str(animal.get('peso_animal', '')).ljust(10)}| {str(animal.get('porte_animal')).ljust(10)}")
+
+            except Exception as e:
+                print(f"Erro ao processar animal: {e}")
+                continue
     else:
-        print("NENHUM ANIMAL CADASTRADO. 🐥")
+        print("NENHUM ANIMAL ENCONTRADO. 🐥")
     voltar_menu_principal()
 
 def atualizar_animal(): #Ainda com problemas
@@ -134,10 +145,21 @@ def excluir_animal(nome_animal):
     print("ANIMAL EXCLUÍDO COM SUCESSO! 🦝")
     voltar_menu_principal()
 
-#def listar_um_animal(): #Ainda não consegui fazer
+def listar_um_animal():
+    nome_animal = input("DIGITE O NOME DO ANIMAL QUE DESEJA BUSCAR: ")
+    animais = carregar_dados_animais()
+    
+    for animal in animais:
+        if animal['nome_animal'].lower() == nome_animal.lower():
+            print(f"NOME: {animal['nome_animal']}, TIPO: {animal['tipo_animal']}, RAÇA: {animal['raca_animal']}, IDADE: {animal['idade_animal']}, SEXO: {animal['sexo_animal']}, COR: {animal['cor_animal']}, PESO: {animal['peso_animal']}, PORTE: {animal['porte_animal']}")
+            break
+    else:
+        print("ANIMAL NÃO ENCONTRADO.")
+
+    voltar_menu_principal()
 
 def voltar_menu_principal():
-    input("APERTE ENTER PARA VOLTAR AO MENU.:")
+    input("APERTE ENTER PARA VOLTAR AO MENU.")
     sleep(3)
     exibir_opcoes_animal()
 
@@ -149,7 +171,6 @@ def exibir_opcoes_animal():
             case 1:
                 cadastrar_animal()
             case 2:
-                print("ANIMAIS CADASTRADOS: ")
                 listar_animais()
             case 3:
                 atualizar_animal()
@@ -157,7 +178,7 @@ def exibir_opcoes_animal():
                 nome_animal = input("NOME DO ANIMAL QUE DESEJA EXCLUÍR:")
                 excluir_animal(nome_animal)
             case 5:
-                exibir_menu_animal()
+                listar_um_animal()
             case 6:
                 print("VOLTANDO AO MENU INICIAL...")
                 sleep(1)

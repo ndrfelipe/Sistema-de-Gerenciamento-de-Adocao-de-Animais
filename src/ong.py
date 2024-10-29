@@ -16,8 +16,6 @@ def salvar_dados_ongs(dados):
     with open(arquivo, 'w') as file:
         json.dump(dados, file, indent=4)
 
-lista_de_ong = []
-
 def exibir_menu_ong():
     print('''
     
@@ -43,32 +41,37 @@ def exibir_subtitulo(texto):
     print()
 
 def cadastrar_ong():
+    lista_de_ong = carregar_dados_ongs()
+   
     exibir_subtitulo("Cadastro de ONG")
     nome = input("Digite o nome da ONG: ")
     cnpj = input("Digite o CNPJ da ONG: ")
-    endereço = input("Digite o endereço da ONG: ")
+    endereco = input("Digite o endereço da ONG: ")
     numero = input("Digite o número de telefone para contato: ")
 
-    lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereço, 'numero':numero})
-    print(f"ONG {nome} adicionada com sucesso! ")
-    
+    lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereco, 'numero':numero})
     salvar_dados_ongs(lista_de_ong)
-    voltar_ao_menu_principal()
-
     
+    print(f"ONG {nome} adicionada com sucesso! ")
+    voltar_menu_principal()
+
     
 def listar_ong():
-    exibir_subtitulo("Listando ONG's")
-    print(f'{"Nome".ljust(22)} | {"CNPJ".ljust(22)} | {"Endereço".ljust(37)} | {"Telefone".ljust(22)}\n')
+    lista_de_ong = carregar_dados_ongs()
+    if lista_de_ong:
+        exibir_subtitulo("Lista das ONG's")
+        print(f"{'Nome'.ljust(22)} | {'CNPJ'.ljust(20)} | {'Endereço'.ljust(35)} | {'Telefone'.ljust(20)}")
+        
+        for ong in lista_de_ong:
+            nome = ong['nome']
+            cnpj = ong['CNPJ']
+            endereco = ong['endereço']
+            numero = ong['numero']
+            print(f'- {nome.ljust(20)} | {cnpj.ljust(20)} | {endereco.ljust(35)} | {numero.ljust(20)}\n')
+    else:
+        print("😒 NENHUM USUÁRIO CADASTRADO.")
 
-    for ong in lista_de_ong:
-        nome = ong['nome']
-        cnpj = ong['CNPJ']
-        endereço = ong['endereço']
-        numero = ong['numero']
-        print(f'- {nome.ljust(20)} | {cnpj.ljust(20)} | {endereço.ljust(35)} | {numero.ljust(20)}')
-
-    voltar_ao_menu_principal()
+    voltar_menu_principal()
 
 def atualizar_ong():
     exibir_subtitulo("Atualização de ONG")
@@ -82,31 +85,69 @@ def atualizar_ong():
     sleep(2)
     print("Atualização feita com sucesso!")
 
-    voltar_ao_menu_principal()
+    voltar_menu_principal()
+
 
 def deletar_ong():
+    lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Deletar ONG")
-    deletar = input("Digite o CNPJ da ONG que deseja deletar: ")
-    sleep(2)
-    print("Excluindo ONG...")
-    sleep(2)
-    print("ONG excluída com sucesso!")
+    deletando_ong = input("Digite o nome ou CNPJ da ONG que deseja deletar: ")
     
-    voltar_ao_menu_principal()
+    deletar = [
+        ong for ong in lista_de_ong 
+        if ong['nome'].lower() == deletando_ong.lower() or ong['CNPJ'].strip() == deletando_ong.strip()
+    ]
+    if deletar:
+        print("ONG encontrada:")
+        for ong in deletar:
+            print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Telefone: {ong['numero']} ")
+            
+            lista_de_ong.remove(ong)  
+            
+            print("Excluindo ONG...")
+            sleep(2)
+            print("ONG deletada com sucesso. ✨")
+            salvar_dados_ongs(lista_de_ong)
+            voltar_menu_principal()
+    else:
+        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+        voltar_menu_principal()
 
 def buscar_ong():
+    lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Buscar ONG")
+    buscando_ong = input("Digite o nome ou CNPJ da ONG: ")
 
-def voltar_ao_menu_principal():
+    busca = [
+        ong for ong in lista_de_ong 
+        if ong['nome'].lower() == buscando_ong.lower() or ong['CNPJ'].strip() == buscando_ong.strip()
+    ]
+
+    if busca:
+        print("ONG encontrada:")
+        for ong in busca:
+            print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Número: {ong['numero']}\n")
+    else:
+        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+
+    voltar_menu_principal()
+
+
+def voltar_menu_principal():
     input("\n--> Digite uma tecla para voltar ao menu: ")
     print("Voltando...")
     sleep(2)
     os.system('cls')
     exibir_opcoes_ong()
 
-#essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
+def opcao_invalida():
+    os.system('cls')
+    print("Opção inválida! Voltando ao menu...")
+    sleep(2)
+    voltar_menu_principal()
+
 def exibir_opcoes_ong():
-    while True:
+    try:
         exibir_menu_ong()
         opcao_ong = int(input("Informe uma opção: "))
     
@@ -125,6 +166,7 @@ def exibir_opcoes_ong():
                 print("Voltando ao menu inicial...")
                 sleep(2)
             case _:
-                print("Opção inválida. Tente novamente")
-                
+                opcao_invalida()
+    except:
+            opcao_invalida() 
 

@@ -18,5 +18,15 @@
         "cor_animal": "Preto",
         "peso_animal": 8.0,
         "porte_animal": "MINI"
+    },
+    {
+        "nome_animal": "Diogo",
+        "tipo_animal": "Dente de sabre ",
+        "raca_animal": "Tigre feroz",
+        "idade_animal": "225",
+        "sexo_animal": "Macho",
+        "cor_animal": "Laranja",
+        "peso_animal": 67.0,
+        "porte_animal": "GRANDE"
     }
 ]
