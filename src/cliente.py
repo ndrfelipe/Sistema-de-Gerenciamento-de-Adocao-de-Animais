@@ -74,9 +74,34 @@ def listar_clientes():
     voltar_menu_principal()
 
     
+<<<<<<< HEAD
+    #ainda precisa de ajuste na parte de opçao invalida
+
+    
+=======
+>>>>>>> 59979fc141554eeb71208312208d99f09c2b0c9d
 
 def atualizar_cliente():
-    pass
+    clientes = carregar_dados_clientes()
+    cadastro_antigo = str(input("Digite o CPF da pessoa que deseja atualizar os dados: "))
+    for cliente in clientes:
+        if cliente['CPF']== cadastro_antigo:
+            cliente['nome'] = input("Digite o novo nome: ")
+            cliente['idade'] = str(input("Digite a nova idade: "))
+            cliente['cpf'] = str(input("Digite o novo CPF: "))
+            cliente['email'] = input("Digite o novo email: ")
+            cliente['telefone'] = input("Digite o novo telefone: ")
+            cliente['endereço'] = str(input("Digite o novo endereço: "))
+            cliente['renda'] = str(input("Digite a nova renda: "))
+            cliente['profissao'] = input("Digite a nova profissão: ")
+            
+            salvar_dados_clientes(clientes)
+            print("\nCliente atualizado com sucesso!")
+    else:
+            print("Cliente não encontrado.")
+
+
+    voltar_menu_principal()
 
 def excluir_cliente():
     pass
