@@ -38,6 +38,40 @@ def exibir_menu_animal():
     print("   | [0] VOLTAR            |")
     print("   =========================")
 
+def exibir_opcoes_animal():
+    try:
+        exibir_menu_animal()
+        opcao_animal = int(input("INFORME UMA OPÇÃO: "))
+        match opcao_animal:
+            case 1:
+                os.system('cls')
+                cadastrar_animal()
+            case 2:
+                os.system('cls')
+                listar_animais()
+            case 3:
+                os.system('cls')
+                atualizar_animal()
+            case 4:
+                os.system('cls')
+                nome_animal = input("NOME DO ANIMAL QUE DESEJA EXCLUÍR:")
+                excluir_animal(nome_animal)
+            case 5:
+                os.system('cls')
+                listar_um_animal()
+            case 6:
+                os.system('cls')
+                print("VOLTANDO AO MENU INICIAL...")
+                sleep(1)
+                print('UM ELEFANTE')
+                sleep(1)
+                print('DOIS ELEFANTES')
+                sleep(1)
+                print('TRÊS ELEFANTES')
+                sleep(1)
+    except ValueError:
+        print("OPÇÃO INVÁLIDA.")
+
 def cadastrar_animal():
 
     animais = carregar_dados_animais()
@@ -46,14 +80,33 @@ def cadastrar_animal():
     tipo_animal  = str(input("    QUAL O ANIMAL? "))
     raca_animal  = str(input("    QUAL A RAÇA DO ANIMAL? "))
     idade_animal = str(input("    QUAL A IDADE DO ANIMAL? "))
-    sexo_animal  = str(input("    QUAL O SEXO DO ANIMAL? "))
+    print("""
+        =========================
+        | [1] MASCULINO         |
+        | [2] FEMININO          |
+        | [0] VOLTAR          |
+        =========================
+        """)
+
+    sexo_animal = int(input(" SELECIONE A OPCAO: "))
+    match sexo_animal:
+        case 0:
+            return
+        case 1:
+            porte_animal = "MASCULINO"
+        case 2:
+            porte_animal = "FEMININO"
+        case _:
+            print(" DIGITE UM CÓDIGO VÁLIDO! ")
+            return
+
     cor_animal   = str(input("    QUAL A COR DO ANIMAL? "))
     peso_animal  = float(input("  QUAL O PESO DO ANIMAL? "))
 
     print("""
         =========================
         | [1] PORTE MINI        |
-        | [2] PEQUENO PORTE     |
+        | [2] PORTE PEQUENO     |
         | [3] PORTE MÉDIO       |
         | [4] PORTE GRANDE      |
         | [5] PORTE GIGANTE     |
@@ -61,7 +114,7 @@ def cadastrar_animal():
         =========================
         """)
 
-    porte_animal = int(input(" SELECIONE O PORTE DO ANIMAL:"))
+    porte_animal = int(input(" SELECIONE O PORTE DO ANIMAL: "))
     
     match porte_animal:
         case 0:
@@ -114,29 +167,83 @@ def listar_animais():
         print("NENHUM ANIMAL ENCONTRADO. 🐥")
     exibir_opcoes_animal()
 
+
 def atualizar_animal(): #Ainda com problemas
-    animais = carregar_dados_animais()
     nome_animal_antigo = input("NOME DO ANIMAL QUE DESEJA ATUALIZAR: ")
+    animais = carregar_dados_animais()
+
     for animal in animais:
-        if  animal ['nome_animal'] == nome_animal_antigo:
-            animal ['nome_animal']  = input("NOVO NOME: ")
-            animal ['idade_animal'] = input("NOVA IDADE: ")
-            animal ['peso_animal']  = input("NOVO PESO: ")
-            animal ['porte_animal'] = input("NOVO PORTE: ")
+        if animal['nome_animal'].lower() == nome_animal_antigo.lower():
+            print("    ANIMAL ENCONTRADO!!")
+            print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+            print("""
+        ==========================
+        | [1] NOME DO ANIMAL     |
+        | [2] TIPO DO ANIMAL     |
+        | [3] RAÇA DO ANIMAL     |
+        | [4] IDADE DO ANIMAL    |
+        | [5] SEXO DO ANIMAL     |
+        | [6] COR DO ANIMAL      |
+        | [7] PESO DO ANIMAL     |
+        | [8] PORTE DO ANIMAL    |
+        | [0] VOLTAR             |
+        ==========================""")
+            opcao_de_atualização = int(input("    DIGITE A OPCAO QUE CORRESPONDE COM O DADO: "))
+            match opcao_de_atualização:
+                case 1:
+                    novo_nome_animal  = str(input("    DIGITE O NOME DO ANIMAL: "))
+                    animal['nome_animal'] = novo_nome_animal
+                    print(f"    Nome alterado para: {animal['nome_animal']}")
+                case 2:
+                    novo_tipo_animal  = str(input("    DIGITE O TIPO DO ANIMAL: "))
+                    animal['tipo_animal'] = novo_tipo_animal
+                    print(f"    Tipo alterado para: {animal['tipo_animal']}")
+                case 3:
+                    nova_raca_animal  = str(input("    DIGITE A RAÇA DO ANIMAL: "))
+                    animal['raca_animal'] = nova_raca_animal
+                    print(f"    Raça alterada para: {animal['raca_animal']}")
+                case 4:
+                    nova_idade_animal = str(input("    DIGITE A IDADE DO ANIMAL: "))
+                    animal['idade_animal'] = nova_idade_animal
+                    print(f"    Idade alterada para: {animal['idade_animal']}")
+                case 5:
+                    print("""
+        =========================
+        | [1] MASCULINO         |
+        | [2] FEMININO          |
+        | [0] VOLTAR          |
+        =========================""")
+                    novo_sexo_animal = int(input(" SELECIONE A OPCAO: "))
+                    match novo_sexo_animal:
+                        case 0:
+                            return
+                        case 1:
+                            animal['sexo_animal'] = "MASCULINO"
+                        case 2:
+                            animal['sexo_animal'] = "FEMININO"
+                        case _:
+                            os.system('cls')
+                            print(" DIGITE UM CÓDIGO VÁLIDO! ")
+                            atualizar_animal()
+                    print(f"Sexo alterado para: {animal['sexo_animal']}")
             break
-        else:
-            print("ANIMAL NÃO ENCONTRADO.")
-        
+    else:
+        print("ANIMAL NÃO ENCONTRADO.")
         with open(arquivo, 'w') as f:
             json.dump(animais, f, indent=4, ensure_ascii=False)
+
         print("ANIMAL ATUALIZADO COM SUCESSO! 🐱")
         exibir_opcoes_animal()
+
+
+exibir_opcoes_animal()
+
 
 def excluir_animal(nome_animal):
     animais = carregar_dados_animais()
 
     for animal in animais:
-        if animal['nome_animal'] == nome_animal:
+        if animal['nome_animal'].lower() == nome_animal.lower():
             animais.remove(animal)
             break
 
@@ -145,39 +252,6 @@ def excluir_animal(nome_animal):
     print("ANIMAL EXCLUÍDO COM SUCESSO! 🦝")
     exibir_opcoes_animal()
 
-def exibir_opcoes_animal():
-    try:
-        exibir_menu_animal()
-        opcao_animal = int(input("INFORME UMA OPÇÃO: "))
-        match opcao_animal:
-            case 1:
-                os.system('cls')
-                cadastrar_animal()
-            case 2:
-                os.system('cls')
-                listar_animais()
-            case 3:
-                os.system('cls')
-                atualizar_animal()
-            case 4:
-                os.system('cls')
-                nome_animal = input("NOME DO ANIMAL QUE DESEJA EXCLUÍR:")
-                excluir_animal(nome_animal)
-            case 5:
-                os.system('cls')
-                listar_um_animal()
-            case 6:
-                os.system('cls')
-                print("VOLTANDO AO MENU INICIAL...")
-                sleep(1)
-                print('UM ELEFANTE')
-                sleep(1)
-                print('DOIS ELEFANTES')
-                sleep(1)
-                print('TRÊS ELEFANTES')
-                sleep(1)
-    except ValueError:
-        print("OPÇÃO INVÁLIDA.")
 
 def listar_um_animal():
     nome_animal = input("DIGITE O NOME DO ANIMAL QUE DESEJA BUSCAR: ")
@@ -191,7 +265,7 @@ def listar_um_animal():
         print("ANIMAL NÃO ENCONTRADO.")
         exibir_opcoes_animal()
 
-listar_um_animal()
+
 
 def voltar_menu_principal():
     input("APERTE ENTER PARA VOLTAR AO MENU.")

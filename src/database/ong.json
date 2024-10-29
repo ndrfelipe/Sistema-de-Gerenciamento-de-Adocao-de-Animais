@@ -4,5 +4,11 @@
         "CNPJ": "12345",
         "endere\u00e7o": "av antonio",
         "numero": "912482948"
+    },
+    {
+        "nome": "2",
+        "CNPJ": "1",
+        "endere\u00e7o": "2",
+        "numero": "1"
     }
 ]

@@ -1,15 +1,5 @@
 [
     {
-        "nome_animal": "Lufy",
-        "tipo_animal": "Gato",
-        "raca_animal": "vira-lata",
-        "idade_animal": "2",
-        "sexo_animal": "Macho",
-        "cor_animal": "Laranja ",
-        "peso_animal": 9.0,
-        "porte_animal": "MINI"
-    },
-    {
         "nome_animal": "Mary",
         "tipo_animal": "Lontra",
         "raca_animal": "Exotica",
@@ -28,5 +18,25 @@
         "cor_animal": "Laranja",
         "peso_animal": 67.0,
         "porte_animal": "GRANDE"
+    },
+    {
+        "nome_animal": "Amora",
+        "tipo_animal": "Cachorro",
+        "raca_animal": "Chitsu",
+        "idade_animal": "2",
+        "sexo_animal": "Feminino",
+        "cor_animal": "marrom ",
+        "peso_animal": 5.0,
+        "porte_animal": "MINI"
+    },
+    {
+        "nome_animal": "Chelby",
+        "tipo_animal": "Cachorro",
+        "raca_animal": "Chitsu",
+        "idade_animal": "3",
+        "sexo_animal": 1,
+        "cor_animal": "branco e cinza",
+        "peso_animal": 1.0,
+        "porte_animal": "PEQUENO"
     }
 ]
