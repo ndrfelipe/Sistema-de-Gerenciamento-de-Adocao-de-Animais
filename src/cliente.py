@@ -74,12 +74,12 @@ def listar_clientes():
     voltar_menu_principal()
 
     
-<<<<<<< HEAD
+#<<<<<<< HEAD
     #ainda precisa de ajuste na parte de opçao invalida
 
     
-=======
->>>>>>> 59979fc141554eeb71208312208d99f09c2b0c9d
+#=======
+#>>>>>>> 59979fc141554eeb71208312208d99f09c2b0c9d
 
 def atualizar_cliente():
     clientes = carregar_dados_clientes()
