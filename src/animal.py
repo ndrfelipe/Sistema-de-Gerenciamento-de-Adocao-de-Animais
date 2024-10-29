@@ -93,7 +93,7 @@ def cadastrar_animal():
     with open(arquivo, 'w') as f:
         json.dump(animais, f, indent=4, ensure_ascii=False)
     print("ANIMAL ADICIONADO COM SUCESSO! 🐶")
-    voltar_menu_principal()
+    exibir_opcoes_animal()
 
 
 
@@ -112,7 +112,7 @@ def listar_animais():
                 continue
     else:
         print("NENHUM ANIMAL ENCONTRADO. 🐥")
-    voltar_menu_principal()
+    exibir_opcoes_animal()
 
 def atualizar_animal(): #Ainda com problemas
     animais = carregar_dados_animais()
@@ -130,7 +130,7 @@ def atualizar_animal(): #Ainda com problemas
         with open(arquivo, 'w') as f:
             json.dump(animais, f, indent=4, ensure_ascii=False)
         print("ANIMAL ATUALIZADO COM SUCESSO! 🐱")
-        voltar_menu_principal()
+        exibir_opcoes_animal()
 
 def excluir_animal(nome_animal):
     animais = carregar_dados_animais()
@@ -143,24 +143,6 @@ def excluir_animal(nome_animal):
     with open(arquivo, 'w') as f:
         json.dump(animais, f, indent=4, ensure_ascii=False)
     print("ANIMAL EXCLUÍDO COM SUCESSO! 🦝")
-    voltar_menu_principal()
-
-def listar_um_animal():
-    nome_animal = input("DIGITE O NOME DO ANIMAL QUE DESEJA BUSCAR: ")
-    animais = carregar_dados_animais()
-    
-    for animal in animais:
-        if animal['nome_animal'].lower() == nome_animal.lower():
-            print(f"NOME: {animal['nome_animal']}, TIPO: {animal['tipo_animal']}, RAÇA: {animal['raca_animal']}, IDADE: {animal['idade_animal']}, SEXO: {animal['sexo_animal']}, COR: {animal['cor_animal']}, PESO: {animal['peso_animal']}, PORTE: {animal['porte_animal']}")
-            break
-    else:
-        print("ANIMAL NÃO ENCONTRADO.")
-
-    voltar_menu_principal()
-
-def voltar_menu_principal():
-    input("APERTE ENTER PARA VOLTAR AO MENU.")
-    sleep(3)
     exibir_opcoes_animal()
 
 def exibir_opcoes_animal():
@@ -169,17 +151,23 @@ def exibir_opcoes_animal():
         opcao_animal = int(input("INFORME UMA OPÇÃO: "))
         match opcao_animal:
             case 1:
+                os.system('cls')
                 cadastrar_animal()
             case 2:
+                os.system('cls')
                 listar_animais()
             case 3:
+                os.system('cls')
                 atualizar_animal()
             case 4:
+                os.system('cls')
                 nome_animal = input("NOME DO ANIMAL QUE DESEJA EXCLUÍR:")
                 excluir_animal(nome_animal)
             case 5:
+                os.system('cls')
                 listar_um_animal()
             case 6:
+                os.system('cls')
                 print("VOLTANDO AO MENU INICIAL...")
                 sleep(1)
                 print('UM ELEFANTE')
@@ -191,3 +179,21 @@ def exibir_opcoes_animal():
     except ValueError:
         print("OPÇÃO INVÁLIDA.")
 
+def listar_um_animal():
+    nome_animal = input("DIGITE O NOME DO ANIMAL QUE DESEJA BUSCAR: ")
+    animais = carregar_dados_animais()
+    
+    for animal in animais:
+        if animal['nome_animal'].lower() == nome_animal.lower():
+            print(f"NOME: {animal['nome_animal']}, TIPO: {animal['tipo_animal']}, RAÇA: {animal['raca_animal']}, IDADE: {animal['idade_animal']}, SEXO: {animal['sexo_animal']}, COR: {animal['cor_animal']}, PESO: {animal['peso_animal']}, PORTE: {animal['porte_animal']}")
+            break
+    else:
+        print("ANIMAL NÃO ENCONTRADO.")
+        exibir_opcoes_animal()
+
+listar_um_animal()
+
+def voltar_menu_principal():
+    input("APERTE ENTER PARA VOLTAR AO MENU.")
+    sleep(3)
+    exibir_opcoes_animal()
