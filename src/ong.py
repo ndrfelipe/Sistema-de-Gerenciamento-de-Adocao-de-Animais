@@ -100,7 +100,7 @@ def deletar_ong():
             lista_de_ong = [ong for ong in lista_de_ong if ong not in deletar]
             print("Excluindo ONG...")
             sleep(2)
-            print("ONG deletada com sucesso.")
+            print("ONG deletada com sucesso. ✨")
             salvar_dados_ongs(lista_de_ong)
             voltar_menu_principal()
     else:
