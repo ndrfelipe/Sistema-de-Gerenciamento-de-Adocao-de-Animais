@@ -41,13 +41,13 @@ def exibir_menu_animal():
 def cadastrar_animal():
     animais = carregar_dados_animais()
 
-    nome_animal  = str(input("  DIGITE O NOME DO ANIMAL: "))
-    tipo_animal  = str(input("  QUAL O ANIMAL? "))
-    raca_animal  = str(input("  QUAL A RAÇA DO ANIMAL? "))
-    idade_animal = str(input("  QUAL A IDADE DO ANIMAL? "))
-    sexo_animal  = str(input("  QUAL O SEXO DO ANIMAL? "))
-    cor_animal   = str(input("  QUAL A COR DO ANIMAL? "))
-    peso_animal  = str(input("  QUAL O PESO DO ANIMAL? "))
+    nome_animal  = str(input("    DIGITE O NOME DO ANIMAL: "))
+    tipo_animal  = str(input("    QUAL O ANIMAL? "))
+    raca_animal  = str(input("    QUAL A RAÇA DO ANIMAL? "))
+    idade_animal = str(input("    QUAL A IDADE DO ANIMAL? "))
+    sexo_animal  = str(input("    QUAL O SEXO DO ANIMAL? "))
+    cor_animal   = str(input("    QUAL A COR DO ANIMAL? "))
+    peso_animal  = float(input("  QUAL O PESO DO ANIMAL? "))
 
     print("""
         =========================
