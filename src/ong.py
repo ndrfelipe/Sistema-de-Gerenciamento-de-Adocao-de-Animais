@@ -63,8 +63,7 @@ def listar_ong():
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
         for ong in lista_de_ong:
-            print(f"nome: {ong['nome']}, cnpj: {ong['cnpj']}, 
-            endereço: {ong['endereco']}, número: {ong['numero']}")
+            print(f"nome: {ong['nome']}, cnpj: {ong['cnpj']}, endereço: {ong['endereco']}, número: {ong['numero']}")
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
         voltar_menu_principal()
