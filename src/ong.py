@@ -73,18 +73,36 @@ def listar_ong():
 
     voltar_menu_principal()
 
-def atualizar_ong():
+def atualizar_ong(cnpj_antigo, novo_nome, novo_cnpj, novo_endereco, novo_numero):
+    lista_de_ong = carregar_dados_ongs()  # Função para carregar a lista de ONGs
+
+    for ong in lista_de_ong:
+        if ong['CNPJ'] == cnpj_antigo:
+            ong['nome'] = novo_nome
+            ong['CNPJ'] = novo_cnpj
+            ong['endereço'] = novo_endereco
+            ong['numero'] = novo_numero
+            print("Atualização feita com sucesso!")
+            salvar_dados_ongs(ong)  # Salvar as mudanças
+            return  # Sai da função após a atualização
+    
+    print("ONG não encontrada. Verifique o CNPJ e tente novamente.")
+
+# Função para executar a atualização com inputs do usuário
+def executar_atualizacao_ong():
     exibir_subtitulo("Atualização de ONG")
-    atualizacao = input("Digite o CNPJ da ONG que deseja atualizar: ")
+    cnpj_antigo = input("Digite o CNPJ da ONG que deseja atualizar: ")
+    
     novo_nome = input("Atualize o nome da ONG: ")
     novo_cnpj = input("Atualize o CNPJ da ONG: ")
-    novo_endereço = input("Atualize o endereço da ONG: ")
+    novo_endereco = input("Atualize o endereço da ONG: ")
     novo_numero = input("Atualize o número da ONG: ")
+    
     sleep(2)
     print("Atualizando os dados...")
     sleep(2)
-    print("Atualização feita com sucesso!")
-
+    
+    atualizar_ong(cnpj_antigo, novo_nome, novo_cnpj, novo_endereco, novo_numero)
     voltar_menu_principal()
 
 def deletar_ong():
@@ -100,7 +118,9 @@ def deletar_ong():
         print("ONG encontrada:")
         for ong in deletar:
             print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Telefone: {ong['numero']} ")
-            lista_de_ong = [ong for ong in lista_de_ong if ong not in deletar]
+            
+            lista_de_ong.remove(ong)  
+            
             print("Excluindo ONG...")
             sleep(2)
             print("ONG deletada com sucesso. ✨")
@@ -143,7 +163,6 @@ def opcao_invalida():
     sleep(2)
     voltar_menu_principal()
 
-#essa função será colocada no arquivo tela_inicial, na opcao cadastro de cliente.
 def exibir_opcoes_ong():
     try:
         exibir_menu_ong()
