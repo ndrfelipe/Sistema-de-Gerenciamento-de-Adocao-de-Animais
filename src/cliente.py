@@ -100,7 +100,19 @@ def atualizar_cliente():
     voltar_menu_principal()
 
 def excluir_cliente():
-    pass
+    lista_clientes = carregar_dados_clientes()
+    cpf_excluido = input("Digite o CPF do cliente a ser excluido: ")
+
+    for cliente in lista_clientes:
+        if cliente['cpf'] == cpf_excluido:
+            lista_clientes.remove(cliente)
+            break
+
+    salvar_dados_clientes(lista_clientes)
+    print("Cliente sendo excluído...")
+    sleep(1)
+    print("Cliente excluído com sucesso. ")
+    voltar_menu_principal()
 
 def listar_um_cliente():
     pass
