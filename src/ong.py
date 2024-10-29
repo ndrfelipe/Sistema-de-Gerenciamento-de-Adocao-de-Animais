@@ -59,15 +59,16 @@ def cadastrar_ong():
     
 def listar_ong():
     lista_de_ong = carregar_dados_ongs()
-    
+
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
+        print(f'{'\033[33m'}{"Nome".ljust(22)} | {"CNPJ".ljust(20)} | {"Endereço".ljust(35)} | {"Telefone".ljust(20)}{'\033[m'}\n')
         for ong in lista_de_ong:
             print(f"nome: {ong['nome']}, cnpj: {ong['cnpj']}, endereço: {ong['endereco']}, número: {ong['numero']}")
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
-        voltar_menu_principal()
-
+    
+    voltar_menu_principal()
 
 def atualizar_ong():
     exibir_subtitulo("Atualização de ONG")
@@ -84,17 +85,47 @@ def atualizar_ong():
     voltar_menu_principal()
 
 def deletar_ong():
+    lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Deletar ONG")
-    deletar = input("Digite o CNPJ da ONG que deseja deletar: ")
-    sleep(2)
-    print("Excluindo ONG...")
-    sleep(2)
-    print("ONG excluída com sucesso!")
+    deletando_ong = input("Digite o nome ou CNPJ da ONG que deseja deletar: ")
     
-    voltar_menu_principal()
+    deletar = [
+        ong for ong in lista_de_ong 
+        if ong['nome'].lower() == deletando_ong.lower() or ong['CNPJ'].strip() == deletando_ong.strip()
+    ]
+    if deletar:
+        print("ONG encontrada:")
+        for ong in deletar:
+            print(f"Nome: {ong['nome']}, CNPJ: {ong['CNPJ']}")
+            lista_de_ong = [ong for ong in lista_de_ong if ong not in deletar]
+            print("Excluindo ONG...")
+            sleep(2)
+            print("ONG deletada com sucesso.")
+            salvar_dados_ongs(lista_de_ong)
+            voltar_menu_principal()
+    else:
+        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+        voltar_menu_principal()
 
 def buscar_ong():
+    lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Buscar ONG")
+    buscando_ong = input("Digite o nome ou CNPJ da ONG: ")
+
+    busca = [
+        ong for ong in lista_de_ong 
+        if ong['nome'].lower() == buscando_ong.lower() or ong['CNPJ'].strip() == buscando_ong.strip()
+    ]
+
+    if busca:
+        print("ONG encontrada:")
+        for ong in busca:
+            print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Número: {ong['numero']}\n")
+    else:
+        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+
+    voltar_menu_principal()
+
 
 def voltar_menu_principal():
     input("\n--> Digite uma tecla para voltar ao menu: ")

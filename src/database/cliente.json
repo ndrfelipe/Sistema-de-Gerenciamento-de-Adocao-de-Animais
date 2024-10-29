@@ -1,15 +1,26 @@
 [
     {
-        "nome": "Andr\u00e9 Felipe",
-        "idade": 19,
-        "CPF": "130.657.094-81"
+        "nome": "Neymar da Silva ",
+        "idade": 27,
+        "cpf": "103.043.212-23",
+        "email": "neymar@champions.com",
+        "telefone": 81988888888,
+        "endereco": "arábia saudita",
+        "renda": 1200,
+        "profissao": "jogador"
     },
     {
-        "nome": "Dayvid",
-        "idade": 20,
-        "CPF": "145226226"
+        "nome": "Ana Clara",
+        "idade": "18",
+        "cpf": "124.613.284-20",
+        "email": "clarinha@gmail.com",
+        "telefone": "(81)988091234",
+        "endereco": "rua marrocos",
+        "renda": "10000",
+        "profissao": "estudante"
     },
     {
+<<<<<<< HEAD
         "nome": "",
         "idade": "",
         "CPF": "111.333.777",
@@ -34,5 +45,15 @@
         "endere\u00e7o": "recife",
         "renda": 0,
         "profissao": "est"
+=======
+        "nome": "André Felipe",
+        "idade": "19",
+        "cpf": "130.657.094-81",
+        "email": "ndrfelipebraga@gmail.com",
+        "telefone": "81985145187",
+        "endereco": "rua ribeiro",
+        "renda": "3000",
+        "profissao": "Estudante"
+>>>>>>> 59979fc141554eeb71208312208d99f09c2b0c9d
     }
 ]
