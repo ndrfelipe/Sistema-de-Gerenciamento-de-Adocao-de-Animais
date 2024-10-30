@@ -75,27 +75,33 @@ def listar_ong():
 
 def atualizar_ong():
     exibir_subtitulo("Atualização de ONG")
-    atualizacao = input("Digite o CNPJ da ONG que deseja atualizar: ")
-    novo_nome = input("Atualize o nome da ONG: ")
-    novo_cnpj = input("Atualize o CNPJ da ONG: ")
-    novo_endereço = input("Atualize o endereço da ONG: ")
-    novo_numero = input("Atualize o número da ONG: ")
-    sleep(2)
-    print("Atualizando os dados...")
-    sleep(2)
-    print("Atualização feita com sucesso!")
-
-    voltar_menu_principal()
+    lista_de_ong = carregar_dados_ongs()
+    antigo_cadastro = input("Digite o CNPJ da ONG que deseja atualizar: ")
+    for ong in lista_de_ong:
+        if ong['cnpj'] == antigo_cadastro:
+            ong['nome'] = input("Digite o novo nome da ONG: ")
+            ong['cnpj'] = input("Digite o novo CNPJ da ONG: ")
+            ong['endereço'] = input("Digite o novo endereço da ONG: ")
+            ong['numero'] = input("Digite o novo número da ONG: ")
+            salvar_dados_ongs(lista_de_ong)
+            sleep(2)
+            print("Atualizando os dados...")
+            sleep(2)
+            print("Atualização feita com sucesso!")
+            voltar_menu_principal()
+        else:
+            print("ONG não encontrada!")
+            voltar_menu_principal()
 
 
 def deletar_ong():
     lista_de_ong = carregar_dados_ongs()
     exibir_subtitulo("Deletar ONG")
-    deletando_ong = input("Digite o nome ou CNPJ da ONG que deseja deletar: ")
+    deletando_ong = input("Digite o CNPJ da ONG que deseja deletar: ")
     
     deletar = [
         ong for ong in lista_de_ong 
-        if ong['nome'].lower() == deletando_ong.lower() or ong['CNPJ'].strip() == deletando_ong.strip()
+        if ong['CNPJ'].strip() == deletando_ong.strip()
     ]
     if deletar:
         print("ONG encontrada:")
@@ -110,7 +116,7 @@ def deletar_ong():
             salvar_dados_ongs(lista_de_ong)
             voltar_menu_principal()
     else:
-        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+        print("😒 Nenhuma ONG encontrada com esse CNPJ.")
         voltar_menu_principal()
 
 def buscar_ong():
