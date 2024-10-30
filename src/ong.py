@@ -24,12 +24,12 @@ def exibir_menu_ong():
 ▒█▄▄▄█ ▀▀▀ ▀▀▀ ░░▀░░ ▀▀▀ ▀░░░▀ ▀░░▀ 　 ▀▀▀░ ▀▀▀ 　 ▒█▄▄▄█ ▀░░▀ ▀▀▀▀
     ''')
     print('''
-        |  [1] Cadastro de ONG's parceiras |
-        |  [2] Listar ONG's parceiras      |
-        |  [3] Atualizar dados             |
-        |  [4] Deletar registro de ONG     |
-        |  [5] Buscar uma ONG              |
-        |  [6] Voltar ao menu principal    |
+          |  [1] Cadastro de ONG's parceiras |
+          |  [2] Listar ONG's parceiras      |
+          |  [3] Atualizar dados             |
+          |  [4] Deletar registro de ONG     |
+          |  [5] Buscar uma ONG              |
+          |  [6] Voltar ao menu principal    |
     ''')
 
 def exibir_subtitulo(texto):
@@ -52,7 +52,8 @@ def cadastrar_ong():
     lista_de_ong.append({'nome': nome, 'CNPJ': cnpj, 'endereço':endereco, 'numero':numero})
     salvar_dados_ongs(lista_de_ong)
     
-    print(f"ONG {nome} adicionada com sucesso! ")
+    print("-" *41)
+    print(f"ONG {nome} adicionada com sucesso! ✨ ")
     voltar_menu_principal()
 
     
@@ -60,7 +61,7 @@ def listar_ong():
     lista_de_ong = carregar_dados_ongs()
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
-        print(f"{'Nome'.ljust(22)} | {'CNPJ'.ljust(20)} | {'Endereço'.ljust(35)} | {'Telefone'.ljust(20)}")
+        print(f"{'Nome'.ljust(22)} | {'CNPJ'.ljust(20)} | {'Endereço'.ljust(35)} | {'Telefone'.ljust(20)}\n")
         
         for ong in lista_de_ong:
             nome = ong['nome']
@@ -85,9 +86,10 @@ def atualizar_ong():
             ong['numero'] = input("Digite o novo número da ONG: ")
             salvar_dados_ongs(lista_de_ong)
             sleep(2)
+            print("-" *43)
             print("Atualizando os dados...")
             sleep(2)
-            print("Atualização feita com sucesso!")
+            print("Atualização feita com sucesso! ✨")
             voltar_menu_principal()
             break
 print("ONG não encontrada!")
@@ -110,6 +112,7 @@ def deletar_ong():
             
             lista_de_ong.remove(ong)  
             
+            print("-" *41)
             print("Excluindo ONG...")
             sleep(2)
             print("ONG deletada com sucesso. ✨")
