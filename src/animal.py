@@ -41,7 +41,7 @@ def exibir_menu_animal():
 def exibir_opcoes_animal():
     try:
         exibir_menu_animal()
-        opcao_animal = int(input("INFORME UMA OPÇÃO: "))
+        opcao_animal = int(input("   INFORME UMA OPÇÃO: "))
         match opcao_animal:
             case 1:
                 os.system('cls')
@@ -168,9 +168,40 @@ def listar_animais():
     exibir_opcoes_animal()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def atualizar_animal(): #Ainda com problemas
     nome_animal_antigo = input("NOME DO ANIMAL QUE DESEJA ATUALIZAR: ")
     animais = carregar_dados_animais()
+    def salvar_dados():
+        with open(arquivo, 'w') as f:
+            json.dump(animais, f, indent=4, ensure_ascii=False)
 
     for animal in animais:
         if animal['nome_animal'].lower() == nome_animal_antigo.lower():
@@ -190,53 +221,164 @@ def atualizar_animal(): #Ainda com problemas
         ==========================""")
             opcao_de_atualização = int(input("    DIGITE A OPCAO QUE CORRESPONDE COM O DADO: "))
             match opcao_de_atualização:
+                case 0:
+                    exibir_opcoes_animal()
                 case 1:
-                    novo_nome_animal  = str(input("    DIGITE O NOME DO ANIMAL: "))
-                    animal['nome_animal'] = novo_nome_animal
-                    print(f"    Nome alterado para: {animal['nome_animal']}")
+                    print("    "+"="*15)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("    "+"="*15)
+                    novo_nome_animal  = str(input("    DIGITE O NOVO NOME DO ANIMAL (DIGITE 0 PARA CANCELAR): "))
+                    if novo_nome_animal != '0':
+                        animal['nome_animal'] = novo_nome_animal
+                        print(f"    Nome alterado para: {animal['nome_animal']}")
+                        salvar_dados()
+                    else:
+                        atualizar_animal()
                 case 2:
-                    novo_tipo_animal  = str(input("    DIGITE O TIPO DO ANIMAL: "))
-                    animal['tipo_animal'] = novo_tipo_animal
-                    print(f"    Tipo alterado para: {animal['tipo_animal']}")
+                    print("    "+"="*15)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("    "+"="*15)
+                    novo_tipo_animal  = str(input("    DIGITE O NOVO TIPO DO ANIMAL (DIGITE 0 PARA CANCELAR): "))
+                    if novo_tipo_animal != '0':
+                        animal['tipo_animal'] = novo_tipo_animal
+                        print(f"    Tipo alterado para: {animal['tipo_animal']}")
+                        salvar_dados()
+                    else:
+                        atualizar_animal()
                 case 3:
-                    nova_raca_animal  = str(input("    DIGITE A RAÇA DO ANIMAL: "))
-                    animal['raca_animal'] = nova_raca_animal
-                    print(f"    Raça alterada para: {animal['raca_animal']}")
+                    print("    "+"="*15)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("    "+"="*15)
+                    nova_raca_animal  = str(input("    DIGITE A NOVA RAÇA DO ANIMAL (DIGITE 0 PARA CANCELAR): "))
+                    if nova_raca_animal != '0':
+                        animal['raca_animal'] = nova_raca_animal
+                        print(f"    Raça alterada para: {animal['raca_animal']}")
+                        salvar_dados()
+                    else:
+                        atualizar_animal()
                 case 4:
-                    nova_idade_animal = str(input("    DIGITE A IDADE DO ANIMAL: "))
-                    animal['idade_animal'] = nova_idade_animal
-                    print(f"    Idade alterada para: {animal['idade_animal']}")
+                    print("    "+"="*15)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("    "+"="*15)
+                    nova_idade_animal = str(input("    DIGITE A NOVA IDADE DO ANIMAL (DIGITE 0 PARA CANCELAR): "))
+                    if nova_idade_animal != '0':
+                        animal['idade_animal'] = nova_idade_animal
+                        print(f"    Idade alterada para: {animal['idade_animal']}")
+                        salvar_dados()
+                    else:
+                        atualizar_animal()
                 case 5:
+                    print("    "+"="*10)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
                     print("""
         =========================
         | [1] MASCULINO         |
         | [2] FEMININO          |
-        | [0] VOLTAR          |
+        | [0] CANCELAR          |
         =========================""")
                     novo_sexo_animal = int(input(" SELECIONE A OPCAO: "))
                     match novo_sexo_animal:
                         case 0:
-                            return
+                            atualizar_animal()
                         case 1:
                             animal['sexo_animal'] = "MASCULINO"
+                            salvar_dados()
                         case 2:
                             animal['sexo_animal'] = "FEMININO"
+                            salvar_dados()
                         case _:
                             os.system('cls')
                             print(" DIGITE UM CÓDIGO VÁLIDO! ")
                             atualizar_animal()
                     print(f"Sexo alterado para: {animal['sexo_animal']}")
+                case 6:
+                    print("    "+"="*10)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("    "+"="*10)
+                    nova_cor_animal   = str(input("    DIGITE A NOVA COR DO ANIMAL (DIGITE 0 PARA CANCELAR): "))
+                    if nova_cor_animal != '0':
+                        animal['cor_animal'] = nova_cor_animal
+                        print(f"    Cor alterada para: {animal['cor_animal']}")
+                        salvar_dados()
+                    else:
+                        atualizar_animal()
+                case 7:
+                    print("    "+"="*10)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("    "+"="*10)
+                    novo_peso_animal  = float(input("    DIGITE O NOVO PESO DO ANIMAL (DIGITE 0 PARA CANCELAR): "))
+                    if novo_peso_animal != '0':
+                        animal['peso_animal'] = novo_peso_animal
+                        print(f"    Peso alterado para: {animal['peso_animal']}")
+                        salvar_dados()
+                    else:
+                        atualizar_animal()
+                case 8:
+                    print("    "+"="*10)
+                    print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+                    print("""
+        =========================
+        | [1] PORTE MINI        |
+        | [2] PORTE PEQUENO     |
+        | [3] PORTE MÉDIO       |
+        | [4] PORTE GRANDE      |
+        | [5] PORTE GIGANTE     |
+        | [0] CANCELAR          |
+        =========================
+        """)
+
+                    op_novo_porte_animal = int(input("    SELECIONE O PORTE DO ANIMAL: "))
+                    
+                    match op_novo_porte_animal:
+                        case 0:
+                            atualizar_animal()
+                        case 1:
+                            animal['porte_animal'] = "MINI"
+                            salvar_dados()
+                        case 2:
+                            animal['porte_animal'] = "PEQUENO"
+                            salvar_dados()
+                        case 3:
+                            animal['porte_animal'] = "MÉDIO"
+                            salvar_dados()
+                        case 4:
+                            animal['porte_animal'] = "GRANDE"
+                            salvar_dados()
+                        case 5:
+                            animal['porte_animal'] = "GIGANTE"
+                            salvar_dados()
+                        case _:
+                            print(" DIGITE UM CÓDIGO VÁLIDO! ")
+                            atualizar_animal()
             break
+        print("ANIMAL ATUALIZADO COM SUCESSO! 🐱")
     else:
         print("ANIMAL NÃO ENCONTRADO.")
         with open(arquivo, 'w') as f:
             json.dump(animais, f, indent=4, ensure_ascii=False)
-
-        print("ANIMAL ATUALIZADO COM SUCESSO! 🐱")
+            
         exibir_opcoes_animal()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exibir_opcoes_animal()
 
 
 def excluir_animal(nome_animal):
