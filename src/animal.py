@@ -236,7 +236,7 @@ def atualizar_animal(): #Ainda com problemas
         exibir_opcoes_animal()
 
 
-exibir_opcoes_animal()
+
 
 
 def excluir_animal(nome_animal):

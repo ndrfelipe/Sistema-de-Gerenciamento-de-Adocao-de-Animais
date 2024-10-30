@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import os
 from time import sleep
@@ -28,7 +29,9 @@ def exibir_menu_cliente():
     print(" 6 - Voltar ao menu anterior")
 
 
+
 def cadastrar_cliente():
+
     clientes = carregar_dados_clientes()
 
     nome = input("Digite o nome do cliente: ")
@@ -49,7 +52,7 @@ def cadastrar_cliente():
                      'renda':renda,
                      'profissao':profissao })
     
-    print(f"O usuário {nome} adicionado com sucesso. ")
+    print(f"O cliente {nome} adicionado com sucesso. ")
 
     salvar_dados_clientes(clientes)
     voltar_menu_principal()
@@ -69,7 +72,7 @@ def listar_clientes():
                 print(f"Erro ao processar cliente: {e}")
                 continue
     else:
-        print("Nenhum usuário encontrado.")
+        print("Nenhum cliente encontrado.")
 
     voltar_menu_principal()
 
@@ -93,8 +96,8 @@ def atualizar_cliente():
             print("\nCliente atualizado com sucesso!")
             break
             
-    else:
-        print("Cliente não encontrado.")
+        else:
+            print("Cliente não encontrado.")
 
 
     voltar_menu_principal()
@@ -115,7 +118,6 @@ def excluir_cliente():
     voltar_menu_principal()
 
 def listar_um_cliente():
-   
     lista_clientes = carregar_dados_clientes()
     buscando_cliente = input("Digite o CPF do cliente que deseja buscar: ")
     for cliente in lista_clientes:
@@ -123,11 +125,9 @@ def listar_um_cliente():
   
         if cliente['cpf'] == buscando_cliente:
             print(f"{cliente.get('nome', '').ljust(20)} | {str(cliente.get('idade', '')).ljust(5)} | {str(cliente.get('cpf', '')).ljust(15)} | {cliente.get('email', '').ljust(25)} | {str(cliente.get('telefone', '')).ljust(15)} | {str(cliente.get('endereco', '')).ljust(25)} | R${str(cliente.get('renda', '')).ljust(10)} | {cliente.get('profissao', '')}")
-
             break
-
-    else:
-        print("Cliente não encontrado.")
+        else:
+            print("Cliente não encontrado.")
     voltar_menu_principal()
    
 
@@ -136,8 +136,7 @@ def voltar_menu_principal():
     sleep(1)
     exibir_opcoes_cliente()
 
-def opcao_invalida():
-    
+def opcao_invalida():  
     print("Opção inválida. Tente novamente. ")
     voltar_menu_principal()
 
@@ -162,5 +161,6 @@ def exibir_opcoes_cliente():
                 sleep(1)
             case _:
                 opcao_invalida()
-    except:
+    except Exception as e:
+        print(f'Erro: {e}')
         opcao_invalida()
