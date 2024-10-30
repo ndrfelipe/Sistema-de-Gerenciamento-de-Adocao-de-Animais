@@ -115,7 +115,21 @@ def excluir_cliente():
     voltar_menu_principal()
 
 def listar_um_cliente():
-    pass
+   
+    lista_clientes = carregar_dados_clientes()
+    buscando_cliente = input("Digite o CPF do cliente que deseja buscar: ")
+    for cliente in lista_clientes:
+        print(f"{'nome'.ljust(20)} | {'idade'.ljust(5)} | {'cpf'.ljust(15)} | {'email'.ljust(25)} | {'telefone'.ljust(15)} | {'endereco'.ljust(25)} | {'renda'.ljust(10)} | {'profissao'}")
+  
+        if cliente['cpf'] == buscando_cliente:
+            print(f"{cliente.get('nome', '').ljust(20)} | {str(cliente.get('idade', '')).ljust(5)} | {str(cliente.get('cpf', '')).ljust(15)} | {cliente.get('email', '').ljust(25)} | {str(cliente.get('telefone', '')).ljust(15)} | {str(cliente.get('endereco', '')).ljust(25)} | R${str(cliente.get('renda', '')).ljust(10)} | {cliente.get('profissao', '')}")
+
+            break
+
+    else:
+        print("Cliente não encontrado.")
+    voltar_menu_principal()
+   
 
 def voltar_menu_principal():
     input('Digite uma tecla para voltar ao menu: ')
@@ -141,7 +155,7 @@ def exibir_opcoes_cliente():
                 atualizar_cliente()
             case 4:
                 excluir_cliente()
-            case 5:
+            case 5 :
                 listar_um_cliente()
             case 6:
                 print("Voltando ao menu inicial... ")
