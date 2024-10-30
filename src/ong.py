@@ -78,9 +78,9 @@ def atualizar_ong():
     lista_de_ong = carregar_dados_ongs()
     antigo_cadastro = input("Digite o CNPJ da ONG que deseja atualizar: ")
     for ong in lista_de_ong:
-        if ong['cnpj'] == antigo_cadastro:
+        if ong['CNPJ'] == antigo_cadastro:
             ong['nome'] = input("Digite o novo nome da ONG: ")
-            ong['cnpj'] = input("Digite o novo CNPJ da ONG: ")
+            ong['CNPJ'] = input("Digite o novo CNPJ da ONG: ")
             ong['endereço'] = input("Digite o novo endereço da ONG: ")
             ong['numero'] = input("Digite o novo número da ONG: ")
             salvar_dados_ongs(lista_de_ong)
@@ -89,9 +89,9 @@ def atualizar_ong():
             sleep(2)
             print("Atualização feita com sucesso!")
             voltar_menu_principal()
-        else:
-            print("ONG não encontrada!")
-            voltar_menu_principal()
+            break
+print("ONG não encontrada!")
+
 
 
 def deletar_ong():
