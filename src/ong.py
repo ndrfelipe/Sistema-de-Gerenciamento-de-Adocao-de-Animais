@@ -92,7 +92,8 @@ def atualizar_ong():
             print("Atualização feita com sucesso! ✨")
             voltar_menu_principal()
             break
-print("ONG não encontrada!")
+    print("ONG não encontrada!")
+    voltar_menu_principal()
 
 
 

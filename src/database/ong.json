@@ -34,5 +34,11 @@
         "CNPJ": "2121",
         "endere\u00e7o": "aaa",
         "numero": "4343"
+    },
+    {
+        "nome": "juninho pet",
+        "CNPJ": "3412",
+        "endere\u00e7o": "rua fulaninha de tal",
+        "numero": "8195245685"
     }
 ]
