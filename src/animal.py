@@ -232,6 +232,7 @@ def atualizar_animal(): #Ainda com problemas
                         animal['nome_animal'] = novo_nome_animal
                         print(f"    Nome alterado para: {animal['nome_animal']}")
                         salvar_dados()
+                        voltar_atualizar_para_menu()
                     else:
                         atualizar_animal()
                 case 2:
@@ -243,6 +244,7 @@ def atualizar_animal(): #Ainda com problemas
                         animal['tipo_animal'] = novo_tipo_animal
                         print(f"    Tipo alterado para: {animal['tipo_animal']}")
                         salvar_dados()
+                        voltar_atualizar_para_menu()
                     else:
                         atualizar_animal()
                 case 3:
@@ -254,6 +256,7 @@ def atualizar_animal(): #Ainda com problemas
                         animal['raca_animal'] = nova_raca_animal
                         print(f"    Raça alterada para: {animal['raca_animal']}")
                         salvar_dados()
+                        voltar_atualizar_para_menu()
                     else:
                         atualizar_animal()
                 case 4:
@@ -265,6 +268,7 @@ def atualizar_animal(): #Ainda com problemas
                         animal['idade_animal'] = nova_idade_animal
                         print(f"    Idade alterada para: {animal['idade_animal']}")
                         salvar_dados()
+                        voltar_atualizar_para_menu()
                     else:
                         atualizar_animal()
                 case 5:
@@ -283,9 +287,11 @@ def atualizar_animal(): #Ainda com problemas
                         case 1:
                             animal['sexo_animal'] = "MASCULINO"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case 2:
                             animal['sexo_animal'] = "FEMININO"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case _:
                             os.system('cls')
                             print(" DIGITE UM CÓDIGO VÁLIDO! ")
@@ -300,6 +306,7 @@ def atualizar_animal(): #Ainda com problemas
                         animal['cor_animal'] = nova_cor_animal
                         print(f"    Cor alterada para: {animal['cor_animal']}")
                         salvar_dados()
+                        voltar_atualizar_para_menu()
                     else:
                         atualizar_animal()
                 case 7:
@@ -311,6 +318,7 @@ def atualizar_animal(): #Ainda com problemas
                         animal['peso_animal'] = novo_peso_animal
                         print(f"    Peso alterado para: {animal['peso_animal']}")
                         salvar_dados()
+                        voltar_atualizar_para_menu()
                     else:
                         atualizar_animal()
                 case 8:
@@ -335,23 +343,28 @@ def atualizar_animal(): #Ainda com problemas
                         case 1:
                             animal['porte_animal'] = "MINI"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case 2:
                             animal['porte_animal'] = "PEQUENO"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case 3:
                             animal['porte_animal'] = "MÉDIO"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case 4:
                             animal['porte_animal'] = "GRANDE"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case 5:
                             animal['porte_animal'] = "GIGANTE"
                             salvar_dados()
+                            voltar_atualizar_para_menu()
                         case _:
                             print(" DIGITE UM CÓDIGO VÁLIDO! ")
                             atualizar_animal()
             break
-        print("ANIMAL ATUALIZADO COM SUCESSO! 🐱")
+
     else:
         print("ANIMAL NÃO ENCONTRADO.")
         with open(arquivo, 'w') as f:
@@ -359,27 +372,11 @@ def atualizar_animal(): #Ainda com problemas
             
         exibir_opcoes_animal()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-exibir_opcoes_animal()
-
+def voltar_atualizar_para_menu():
+    print("    ANIMAL ATUALIZADO COM SUCESSO!!")
+    input("    APERTE ENTER PARA VOLTAR")
+    os.system('cls')
+    exibir_opcoes_animal()
 
 def excluir_animal(nome_animal):
     animais = carregar_dados_animais()

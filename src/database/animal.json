@@ -1,7 +1,7 @@
 [
     {
         "nome_animal": "Mary",
-        "tipo_animal": "Lontra",
+        "tipo_animal": "\\kasak",
         "raca_animal": "Exotica",
         "idade_animal": "9",
         "sexo_animal": "MASCULINO",
