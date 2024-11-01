@@ -2,6 +2,11 @@ from time import sleep
 import os
 import json
 
+cores = {'vermelho':'\033[31m',
+         'amarelo':'\033[33m',
+         'verde':'\033[32m',
+         'limpar':'\033[m'}
+
 arquivo = os.path.join(os.path.dirname(__file__), 'database', 'ong.json')
 
 def carregar_dados_ongs():
@@ -17,6 +22,7 @@ def salvar_dados_ongs(dados):
         json.dump(dados, file, indent=4)
 
 def exibir_menu_ong():
+    os.system('cls')
     print('''
     
 ▒█▀▀▀█ ░▀░ █▀▀ ▀▀█▀▀ █▀▀ █▀▄▀█ █▀▀█ 　 █▀▀▄ █▀▀ 　 ▒█▀▀▀█ █▀▀▄ █▀▀▀ 
@@ -53,7 +59,7 @@ def cadastrar_ong():
     salvar_dados_ongs(lista_de_ong)
     
     print("-" *41)
-    print(f"ONG {nome} adicionada com sucesso! ✨ ")
+    print(f"ONG {nome} adicionada com {cores['verde']}sucesso! {cores['limpar']}✨ ")
     voltar_menu_principal()
 
     
@@ -61,7 +67,7 @@ def listar_ong():
     lista_de_ong = carregar_dados_ongs()
     if lista_de_ong:
         exibir_subtitulo("Lista das ONG's")
-        print(f"{'Nome'.ljust(22)} | {'CNPJ'.ljust(20)} | {'Endereço'.ljust(35)} | {'Telefone'.ljust(20)}\n")
+        print(f"{cores['amarelo']}{'Nome'.ljust(22)} | {'CNPJ'.ljust(20)} | {'Endereço'.ljust(35)} | {'Telefone'.ljust(20)}{cores['limpar']}\n")
         
         for ong in lista_de_ong:
             nome = ong['nome']
@@ -89,10 +95,10 @@ def atualizar_ong():
             print("-" *43)
             print("Atualizando os dados...")
             sleep(2)
-            print("Atualização feita com sucesso! ✨")
+            print(f"{cores['verde']}Atualização feita com sucesso! ✨{cores['limpar']}")
             voltar_menu_principal()
             break
-    print("ONG não encontrada!")
+    print(f"{cores['vermelho']}ONG não encontrada!{cores['limpar']}")
     voltar_menu_principal()
 
 
@@ -107,7 +113,7 @@ def deletar_ong():
         if ong['CNPJ'].strip() == deletando_ong.strip()
     ]
     if deletar:
-        print("ONG encontrada:")
+        print(f"{cores['verde']}ONG encontrada:{cores['limpar']}")
         for ong in deletar:
             print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Telefone: {ong['numero']} ")
             
@@ -116,11 +122,11 @@ def deletar_ong():
             print("-" *41)
             print("Excluindo ONG...")
             sleep(2)
-            print("ONG deletada com sucesso. ✨")
+            print(f"{cores['verde']}ONG deletada com sucesso. ✨{cores['limpar']}")
             salvar_dados_ongs(lista_de_ong)
             voltar_menu_principal()
     else:
-        print("😒 Nenhuma ONG encontrada com esse CNPJ.")
+        print(f"😒 {cores['vermelho']}Nenhuma ONG encontrada com esse CNPJ.{cores['limpar']}")
         voltar_menu_principal()
 
 def buscar_ong():
@@ -134,11 +140,11 @@ def buscar_ong():
     ]
 
     if busca:
-        print("ONG encontrada:")
+        print(f"{cores['verde']}ONG encontrada:{cores['limpar']}")
         for ong in busca:
             print(f"- Nome: {ong['nome']}\n- CNPJ: {ong['CNPJ']}\n- Endereço: {ong['endereço']}\n- Número: {ong['numero']}\n")
     else:
-        print("😒 Nenhuma ONG encontrada com esse nome ou CNPJ.")
+        print(f"😒 {cores['vermelho']}Nenhuma ONG encontrada com esse nome ou CNPJ.{cores['limpar']}")
 
     voltar_menu_principal()
 
@@ -152,7 +158,7 @@ def voltar_menu_principal():
 
 def opcao_invalida():
     os.system('cls')
-    print("Opção inválida! Voltando ao menu...")
+    print(f"{cores['vermelho']}Opção inválida! {cores['limpar']}Voltando ao menu...")
     sleep(2)
     voltar_menu_principal()
 
