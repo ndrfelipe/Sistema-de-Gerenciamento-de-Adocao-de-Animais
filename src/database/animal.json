@@ -38,5 +38,25 @@
         "cor_animal": "branco e cinza",
         "peso_animal": 1.0,
         "porte_animal": "PEQUENO"
+    },
+    {
+        "nome_animal": "Mimi",
+        "tipo_animal": "Cachorro",
+        "raca_animal": "De rico",
+        "idade_animal": "85",
+        "sexo_animal": 2,
+        "cor_animal": "Amarelo",
+        "peso_animal": 56.0,
+        "porte_animal": "PEQUENO"
+    },
+    {
+        "nome_animal": "Dragao",
+        "tipo_animal": "Coelho",
+        "raca_animal": "Branco",
+        "idade_animal": "2",
+        "sexo_animal": 2,
+        "cor_animal": "Preto",
+        "peso_animal": 25.0,
+        "porte_animal": "MINI"
     }
 ]

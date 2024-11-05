@@ -38,42 +38,7 @@ def exibir_menu_animal():
     print("   | [0] VOLTAR            |")
     print("   =========================")
 
-def exibir_opcoes_animal():
-    try:
-        exibir_menu_animal()
-        opcao_animal = int(input("   INFORME UMA OPÇÃO: "))
-        match opcao_animal:
-            case 1:
-                os.system('cls')
-                cadastrar_animal()
-            case 2:
-                os.system('cls')
-                listar_animais()
-            case 3:
-                os.system('cls')
-                atualizar_animal()
-            case 4:
-                os.system('cls')
-                nome_animal = input("NOME DO ANIMAL QUE DESEJA EXCLUÍR:")
-                excluir_animal(nome_animal)
-            case 5:
-                os.system('cls')
-                listar_um_animal()
-            case 6:
-                os.system('cls')
-                print("VOLTANDO AO MENU INICIAL...")
-                sleep(1)
-                print('UM ELEFANTE')
-                sleep(1)
-                print('DOIS ELEFANTES')
-                sleep(1)
-                print('TRÊS ELEFANTES')
-                sleep(1)
-    except ValueError:
-        print("OPÇÃO INVÁLIDA.")
-
 def cadastrar_animal():
-
     animais = carregar_dados_animais()
 
     nome_animal  = str(input("    DIGITE O NOME DO ANIMAL: "))
@@ -84,7 +49,7 @@ def cadastrar_animal():
         =========================
         | [1] MASCULINO         |
         | [2] FEMININO          |
-        | [0] VOLTAR          |
+        | [0] VOLTAR            |
         =========================
         """)
 
@@ -100,7 +65,7 @@ def cadastrar_animal():
             print(" DIGITE UM CÓDIGO VÁLIDO! ")
             return
 
-    cor_animal   = str(input("    QUAL A COR DO ANIMAL? "))
+    cor_animal   = str(input("    QUAL A COR DO ANIMAL? " ))
     peso_animal  = float(input("  QUAL O PESO DO ANIMAL? "))
 
     print("""
@@ -148,8 +113,6 @@ def cadastrar_animal():
     print("ANIMAL ADICIONADO COM SUCESSO! 🐶")
     exibir_opcoes_animal()
 
-
-
 def listar_animais():
     animais = carregar_dados_animais()
     if animais:
@@ -167,36 +130,7 @@ def listar_animais():
         print("NENHUM ANIMAL ENCONTRADO. 🐥")
     exibir_opcoes_animal()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def atualizar_animal(): #Ainda com problemas
+def atualizar_animal(): 
     nome_animal_antigo = input("NOME DO ANIMAL QUE DESEJA ATUALIZAR: ")
     animais = carregar_dados_animais()
     def salvar_dados():
@@ -206,7 +140,7 @@ def atualizar_animal(): #Ainda com problemas
     for animal in animais:
         if animal['nome_animal'].lower() == nome_animal_antigo.lower():
             print("    ANIMAL ENCONTRADO!!")
-            print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
+            print(f"   ANIMAL SENDO EDITADO: {animal['nome_animal']}")
             print("""
         ==========================
         | [1] NOME DO ANIMAL     |
@@ -370,12 +304,6 @@ def atualizar_animal(): #Ainda com problemas
         with open(arquivo, 'w') as f:
             json.dump(animais, f, indent=4, ensure_ascii=False)
             
-        exibir_opcoes_animal()
-
-def voltar_atualizar_para_menu():
-    print("    ANIMAL ATUALIZADO COM SUCESSO!!")
-    input("    APERTE ENTER PARA VOLTAR")
-    os.system('cls')
     exibir_opcoes_animal()
 
 def excluir_animal(nome_animal):
@@ -391,7 +319,6 @@ def excluir_animal(nome_animal):
     print("ANIMAL EXCLUÍDO COM SUCESSO! 🦝")
     exibir_opcoes_animal()
 
-
 def listar_um_animal():
     nome_animal = input("DIGITE O NOME DO ANIMAL QUE DESEJA BUSCAR: ")
     animais = carregar_dados_animais()
@@ -402,11 +329,49 @@ def listar_um_animal():
             break
     else:
         print("ANIMAL NÃO ENCONTRADO.")
-        exibir_opcoes_animal()
+    exibir_opcoes_animal()
 
-
+def voltar_atualizar_para_menu():
+    print("    ANIMAL ATUALIZADO COM SUCESSO!!")
+    input("    APERTE ENTER PARA VOLTAR")
+    os.system('cls')
+    exibir_opcoes_animal()
 
 def voltar_menu_principal():
     input("APERTE ENTER PARA VOLTAR AO MENU.")
     sleep(3)
     exibir_opcoes_animal()
+
+def exibir_opcoes_animal():
+    try:
+        exibir_menu_animal()
+        opcao_animal = int(input("   INFORME UMA OPÇÃO: "))
+        match opcao_animal:
+            case 1:
+                os.system('cls')
+                cadastrar_animal()
+            case 2:
+                os.system('cls')
+                listar_animais()
+            case 3:
+                os.system('cls')
+                atualizar_animal()
+            case 4:
+                os.system('cls')
+                nome_animal = input("NOME DO ANIMAL QUE DESEJA EXCLUÍR:")
+                excluir_animal(nome_animal)
+            case 5:
+                os.system('cls')
+                listar_um_animal()
+            case 6:
+                os.system('cls')
+                print("VOLTANDO AO MENU INICIAL...")
+                sleep(1)
+                print('UM ELEFANTE')
+                sleep(1)
+                print('DOIS ELEFANTES')
+                sleep(1)
+                print('TRÊS ELEFANTES')
+                sleep(1)
+    except ValueError:
+        print("OPÇÃO INVÁLIDA.")
