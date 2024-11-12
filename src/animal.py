@@ -35,7 +35,7 @@ def exibir_menu_animal():
     print("   | [3] ATUALIZAR ANIMAL  |")
     print("   | [4] EXCLUIR ANIMAL    |")
     print("   | [5] LISTAR UM ANIMAL  |")
-    print("   | [0] VOLTAR            |")
+    print("   | [6] VOLTAR            |")
     print("   =========================")
 
 def cadastrar_animal():
@@ -111,7 +111,7 @@ def cadastrar_animal():
     with open(arquivo, 'w') as f:
         json.dump(animais, f, indent=4, ensure_ascii=False)
     print("ANIMAL ADICIONADO COM SUCESSO! 🐶")
-    exibir_opcoes_animal()
+    voltar_menu_principal()
 
 def listar_animais():
     animais = carregar_dados_animais()
@@ -128,7 +128,7 @@ def listar_animais():
                 continue
     else:
         print("NENHUM ANIMAL ENCONTRADO. 🐥")
-    exibir_opcoes_animal()
+    voltar_menu_principal()
 
 def atualizar_animal(): 
     nome_animal_antigo = input("NOME DO ANIMAL QUE DESEJA ATUALIZAR: ")
@@ -156,7 +156,7 @@ def atualizar_animal():
             opcao_de_atualização = int(input("    DIGITE A OPCAO QUE CORRESPONDE COM O DADO: "))
             match opcao_de_atualização:
                 case 0:
-                    exibir_opcoes_animal()
+                    voltar_menu_principal()
                 case 1:
                     print("    "+"="*15)
                     print(f"    ANIMAL SENDO EDITADO: {animal['nome_animal']}")
@@ -298,7 +298,6 @@ def atualizar_animal():
                             print(" DIGITE UM CÓDIGO VÁLIDO! ")
                             atualizar_animal()
             break
-
     else:
         print("ANIMAL NÃO ENCONTRADO.")
         with open(arquivo, 'w') as f:
@@ -329,13 +328,20 @@ def listar_um_animal():
             break
     else:
         print("ANIMAL NÃO ENCONTRADO.")
-    exibir_opcoes_animal()
+    voltar_menu_principal()
 
 def voltar_atualizar_para_menu():
+    nome_animal_antigo = None
+    opcao_de_atualização = None
     print("    ANIMAL ATUALIZADO COM SUCESSO!!")
     input("    APERTE ENTER PARA VOLTAR")
     os.system('cls')
-    exibir_opcoes_animal()
+    op24 = str(input("Você deseja alterar mais uma vez? (S/N): "))
+    if op24.lower() != "s":
+        voltar_menu_principal()
+    else: 
+        atualizar_animal()
+    os.system('cls')
 
 def voltar_menu_principal():
     input("APERTE ENTER PARA VOLTAR AO MENU.")
@@ -372,6 +378,6 @@ def exibir_opcoes_animal():
                 print('DOIS ELEFANTES')
                 sleep(1)
                 print('TRÊS ELEFANTES')
-                sleep(1)
+                sleep(2)
     except ValueError:
         print("OPÇÃO INVÁLIDA.")
