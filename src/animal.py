@@ -18,7 +18,7 @@ def carregar_dados_animais():
             return []
 
 def exibir_menu_animal():
-    system.os('cls')
+    os.system('cls')
     print("""
     ───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
     ───█▒▒░░░░░░░░░▒▒█───
