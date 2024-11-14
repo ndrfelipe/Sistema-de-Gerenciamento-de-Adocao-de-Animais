@@ -18,5 +18,15 @@
         "cor_animal": "Amarelo",
         "peso_animal": 6.0,
         "porte_animal": "GIGANTE"
+    },
+    {
+        "nome_animal": "Luan",
+        "tipo_animal": "Pato",
+        "raca_animal": "Branco",
+        "idade_animal": "1",
+        "sexo_animal": "MASCULINO",
+        "cor_animal": "branco",
+        "peso_animal": 1.0,
+        "porte_animal": "PEQUENO"
     }
 ]
