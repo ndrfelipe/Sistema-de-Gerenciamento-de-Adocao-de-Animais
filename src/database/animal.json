@@ -1,62 +1,22 @@
 [
     {
-        "nome_animal": "Mary",
-        "tipo_animal": "\\kasak",
-        "raca_animal": "Exotica",
-        "idade_animal": "9",
+        "nome_animal": "Jorge",
+        "tipo_animal": "Gato",
+        "raca_animal": "Lata",
+        "idade_animal": "8",
         "sexo_animal": "MASCULINO",
         "cor_animal": "Preto",
-        "peso_animal": 8.0,
-        "porte_animal": "MINI"
-    },
-    {
-        "nome_animal": "Diogo",
-        "tipo_animal": "Dente de sabre ",
-        "raca_animal": "Tigre feroz",
-        "idade_animal": "225",
-        "sexo_animal": "Macho",
-        "cor_animal": "Laranja",
-        "peso_animal": 67.0,
-        "porte_animal": "GRANDE"
-    },
-    {
-        "nome_animal": "Amora",
-        "tipo_animal": "Cachorro",
-        "raca_animal": "Chitsu",
-        "idade_animal": "2",
-        "sexo_animal": "Feminino",
-        "cor_animal": "marrom ",
-        "peso_animal": 5.0,
-        "porte_animal": "MINI"
-    },
-    {
-        "nome_animal": "Chelby",
-        "tipo_animal": "Cachorro",
-        "raca_animal": "Chitsu",
-        "idade_animal": "3",
-        "sexo_animal": 1,
-        "cor_animal": "branco e cinza",
-        "peso_animal": 1.0,
+        "peso_animal": 9.0,
         "porte_animal": "PEQUENO"
     },
     {
         "nome_animal": "Mimi",
         "tipo_animal": "Cachorro",
-        "raca_animal": "De rico",
-        "idade_animal": "85",
-        "sexo_animal": 2,
+        "raca_animal": "Golden",
+        "idade_animal": "8",
+        "sexo_animal": "FEMININO",
         "cor_animal": "Amarelo",
-        "peso_animal": 56.0,
-        "porte_animal": "PEQUENO"
-    },
-    {
-        "nome_animal": "dragao",
-        "tipo_animal": "Coelho",
-        "raca_animal": "Branco",
-        "idade_animal": "2",
-        "sexo_animal": 2,
-        "cor_animal": "Preto",
-        "peso_animal": 25.0,
-        "porte_animal": "MINI"
+        "peso_animal": 6.0,
+        "porte_animal": "GIGANTE"
     }
 ]

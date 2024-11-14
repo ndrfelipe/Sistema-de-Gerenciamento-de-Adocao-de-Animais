@@ -58,9 +58,9 @@ def cadastrar_animal():
         case 0:
             return
         case 1:
-            porte_animal = "MASCULINO"
+            sexo_animal = "MASCULINO"
         case 2:
-            porte_animal = "FEMININO"
+            sexo_animal = "FEMININO"
         case _:
             print(" DIGITE UM CÓDIGO VÁLIDO! ")
             return
@@ -116,16 +116,16 @@ def cadastrar_animal():
 def listar_animais():
     animais = carregar_dados_animais()
     if animais:
-        for animal in animais:
             try:
-                print(f"LISTA DE ANIMAIS \n")
-                print(f"{'NOME'.ljust(10)} | {'TIPO'.ljust(10)} | {'RAÇA'.ljust(10)} | {'IDADE'.ljust(10)} | {'SEXO '.ljust(10)} | {'COR'.ljust(10)} | {'PESO'.ljust(10)} | {'PORTE '.ljust(10)}")
+                print("LISTA DE ANIMAIS\n")
+                print(f"{'NOME'.ljust(12)} | {'TIPO'.ljust(12)} | {'RAÇA'.ljust(12)} | {'IDADE'.ljust(8)} | {'SEXO'.ljust(8)} | {'COR'.ljust(10)} | {'PESO'.ljust(8)} | {'PORTE'.ljust(8)}")
+                print("-" * 80)
                 
-                print(f"{animal.get('nome_animal', '').ljust(10)} | {str(animal.get('tipo_animal', '')).ljust(10)} | {str(animal.get('raca_animal', '')).ljust(10)} | {animal.get('idade_animal', '').ljust(10)} | {str(animal.get('sexo_animal', '')).ljust(10)} | {str(animal.get('cor_animal', '')).ljust(10)} | {str(animal.get('peso_animal', '')).ljust(10)}| {str(animal.get('porte_animal')).ljust(10)}")
+                for animal in animais:
+                    print(f"{animal.get('nome_animal', '').ljust(12)} | {str(animal.get('tipo_animal', '')).ljust(12)} | {str(animal.get('raca_animal', '')).ljust(12)} | {animal.get('idade_animal', '').ljust(8)} | {str(animal.get('sexo_animal', '')).ljust(8)} | {str(animal.get('cor_animal', '')).ljust(8)} | {str(animal.get('peso_animal', '')).ljust(8)}| {str(animal.get('porte_animal')).ljust(8)}")
 
             except Exception as e:
                 print(f"Erro ao processar animal: {e}")
-                continue
     else:
         print("NENHUM ANIMAL ENCONTRADO. 🐥")
     voltar_menu_principal()
