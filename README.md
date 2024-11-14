@@ -32,7 +32,7 @@ Este projeto foi desenvolvido pelos seguintes alunos da **Cesar School**, durant
 - Dayvid Cristiano Viana da Silva
 - Jeniffer Cristine Lopes da Conceição
 - Letícia Gabriella da Costa Silva
-- Manuele Macêdo Perreira da Silva
+- Manuele Macêdo Pereira da Silva
   
 ## Licença
 Este projeto foi desenvolvido para fins acadêmicos e está disponível para fins de estudo e
