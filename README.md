@@ -7,7 +7,7 @@ com três CRUDs: ONG, Cliente e Animal.
 ## Tecnologias Utilizadas
 - Linguagem: Python
 - Banco de Dados: JSON (arquivos locais)
-- 
+  
 ## Instalação
 Para rodar o projeto, siga os passos abaixo:
 1. Baixe ou clone o repositório para a sua máquina.
