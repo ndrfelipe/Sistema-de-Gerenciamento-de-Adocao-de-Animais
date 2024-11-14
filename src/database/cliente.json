@@ -1,13 +1,13 @@
 [
     {
-        "nome": "Andre Felipe",
-        "idade": "19",
+        "nome": "André Felipe",
+        "idade": "20",
         "cpf": "130.657.094-81",
-        "email": "ndrfelipe@gmail.com",
-        "telefone": "81985145187",
-        "endereco": "rua ribero",
-        "renda": "10",
-        "profissao": "estudante"
+        "email": "bragandre05@gmail",
+        "telefone": "81985134042",
+        "endereco": "arthur lund 2",
+        "renda": "4294",
+        "profissao": "Admin"
     },
     {
         "nome": "leticia1",
@@ -18,5 +18,15 @@
         "endereco": "centro",
         "renda": "10000",
         "profissao": "estudante"
+    },
+    {
+        "nome": "Arthur Lira",
+        "idade": "23",
+        "cpf": "13021105192",
+        "email": "arthurlira@gmail.com",
+        "telefone": "81985120931",
+        "endereco": "Apolo Recife",
+        "renda": "20000",
+        "profissao": "advogado"
     }
 ]

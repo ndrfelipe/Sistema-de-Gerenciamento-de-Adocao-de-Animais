@@ -121,13 +121,12 @@ def listar_um_cliente():
     lista_clientes = carregar_dados_clientes()
     buscando_cliente = input("Digite o CPF do cliente que deseja buscar: ")
     for cliente in lista_clientes:
-        print(f"{'nome'.ljust(20)} | {'idade'.ljust(5)} | {'cpf'.ljust(15)} | {'email'.ljust(25)} | {'telefone'.ljust(15)} | {'endereco'.ljust(25)} | {'renda'.ljust(10)} | {'profissao'}")
-  
         if cliente['cpf'] == buscando_cliente:
+            print(f"{'nome'.ljust(20)} | {'idade'.ljust(5)} | {'cpf'.ljust(15)} | {'email'.ljust(25)} | {'telefone'.ljust(15)} | {'endereco'.ljust(25)} | {'renda'.ljust(10)} | {'profissao'}")
             print(f"{cliente.get('nome', '').ljust(20)} | {str(cliente.get('idade', '')).ljust(5)} | {str(cliente.get('cpf', '')).ljust(15)} | {cliente.get('email', '').ljust(25)} | {str(cliente.get('telefone', '')).ljust(15)} | {str(cliente.get('endereco', '')).ljust(25)} | R${str(cliente.get('renda', '')).ljust(10)} | {cliente.get('profissao', '')}")
             break
-        else:
-            print("Cliente não encontrado.")
+    else:
+        print("Cliente não encontrado.")
     voltar_menu_principal()
    
 

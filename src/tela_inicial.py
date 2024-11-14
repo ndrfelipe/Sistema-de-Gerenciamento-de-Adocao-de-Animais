@@ -28,7 +28,6 @@ def tela_usuario():
 
         match(opcao_inicial):
             case 1:
-                # aqui vai ser chamada a funçao do crud cliente
                 exibir_opcoes_cliente()
             case 2:
                 exibir_opcoes_animal()

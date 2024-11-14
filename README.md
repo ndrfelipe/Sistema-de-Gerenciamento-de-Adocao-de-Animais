@@ -14,7 +14,6 @@ Para rodar o projeto, siga os passos abaixo:
 2. Navegue até a pasta onde o arquivo `app.py` está localizado.
 3. Certifique-se de que o Python esteja instalado em sua máquina.
 4. Execute o comando `python app.py` no terminal.
-
    
 ## Como Usar
 Ao executar o código, um menu de opções será exibido no terminal, com as seguintes
