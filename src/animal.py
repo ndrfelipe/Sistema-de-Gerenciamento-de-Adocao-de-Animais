@@ -137,6 +137,7 @@ def atualizar_animal():
     def salvar_dados():
         with open(arquivo, 'w') as f:
             json.dump(animais, f, indent=4, ensure_ascii=False)
+    
 
     for animal in animais:
         if animal['nome_animal'].lower() == nome_animal_antigo.lower():
@@ -303,6 +304,7 @@ def atualizar_animal():
         print("ANIMAL NÃO ENCONTRADO.")
         with open(arquivo, 'w') as f:
             json.dump(animais, f, indent=4, ensure_ascii=False)
+        none = input("APERTE ENTER PARA VOLTAR ")
             
     exibir_opcoes_animal()
 
